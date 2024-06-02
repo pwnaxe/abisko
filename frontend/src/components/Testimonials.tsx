@@ -21,7 +21,7 @@ const testimonials = [
   [
     {
       content:
-        'Mira’s teaching style is second to none. Everything was easy to follow every step of the way.',
+        'Łukasz is a great guy. He is very knowledgeable and passionate about travel. He has a lot of experience and is always willing to share it with others. He is a great person to work with and I would recommend him to anyone looking for a travel expert.',
       author: {
         name: 'Antonio Littel',
         role: 'Frontend Developer',
@@ -30,7 +30,7 @@ const testimonials = [
     },
     {
       content:
-        'Even though I was excited to learn, I was pessimistic that I wouldn’t actually ever get good enough to design my own icons. I was wrong — this book is all I needed.',
+        'Best travel experience ever! It was a great way to see the world and meet new people. I would recommend it to anyone who loves to travel.',
       author: {
         name: 'Lynn Nolan',
         role: 'Growth Marketer',
@@ -39,7 +39,7 @@ const testimonials = [
     },
     {
       content:
-        'I’ve been employed as a professional icon designer for years and still learned tons of new tricks that have made my work even better',
+        'Abisko is a great place to visit. It is a beautiful place with a lot of history and culture. The people are friendly and the food is great. I would recommend it to anyone looking for a unique travel experience.',
       author: {
         name: 'Krista Prosacco',
         role: 'Professional Designer',
@@ -50,7 +50,7 @@ const testimonials = [
   [
     {
       content:
-        'I run an ecommerce store selling rare vintage gummy bears and could never find a good gummy bear icon. Now I can design my own in minutes.',
+        'Im not sure how i would have gotten through the last year without the support of the Abisko community. It’s been a great way to connect with other designers and learn from their experiences.',
       author: {
         name: 'Cameron Considine',
         role: 'Entrepreneur',
@@ -59,7 +59,7 @@ const testimonials = [
     },
     {
       content:
-        'The complete package is worth it for the weekly teardown videos alone. I’ve learned so much watching Mira take apart other icons and recreate them from scratch.',
+        'Your best trip advisor ever! I have been to many places around the world, but Abisko is my favorite. It is a place that is not just a place, it is an experience. An experience that will take you to the edge of the world and back. It is a place where you can see the Northern Lights from the village, where you can hike, ski, fish, and explore the wilderness. It is a place where you can relax, unwind, and recharge. It is a place where you can be yourself.',
       author: {
         name: 'Regina Wisoky',
         role: 'Design Student',
@@ -68,7 +68,7 @@ const testimonials = [
     },
     {
       content:
-        'I didn’t expect to find a lot of value in the community but now I’m in there for at least an hour every day picking up tips from other designers.',
+        'Want to visit abisko again? Take me with you! I have been to many places around the world, but Abisko is my favorite. It is a place that is not just a place, it is an experience. An experience that will take you to the edge of the world and back. It is a place where you can see the Northern Lights from the village, where you can hike, ski, fish, and explore the wilderness. It is a place where you can relax, unwind, and recharge. It is a place where you can be yourself.',
       author: {
         name: 'Vernon Cummerata',
         role: 'UI Engineer',
@@ -79,7 +79,7 @@ const testimonials = [
   [
     {
       content:
-        'I couldn’t believe how fast Mira moved in Figma compared to my own workflow. I’m designing icons more accurately in half the time with the shortcuts I learned from her videos.',
+        'ready? steady? go! I have been to many places around the world, but Abisko is my favorite. It is a place that is not just a place, it is an experience. An experience that will take you to the edge of the world and back. It is a place where you can see the Northern Lights from the village, where you can hike, ski, fish, and explore the wilderness. It is a place where you can relax, unwind, and recharge. It is a place where you can be yourself.',
       author: {
         name: 'Steven Hackett',
         role: 'Bootcamp Instructor',
@@ -88,7 +88,7 @@ const testimonials = [
     },
     {
       content:
-        'I never thought I would enjoy designing icons but using the ideas in this book, it’s become a great way for me to relax while still being creative.',
+        'I never thought I would be able to travel the world and work at the same time. But with Abisko, I was able to do just that. I was able to work from anywhere in the world and still have time to explore new places and meet new people. It was an amazing experience and I would recommend it to anyone who loves to travel.',
       author: {
         name: 'Carla Schoen',
         role: 'Startup Founder',
@@ -97,7 +97,7 @@ const testimonials = [
     },
     {
       content:
-        'All I can say is wow — this is easily the best icon design resource I’ve ever encountered.',
+        'Abisko is a great place to visit. It is a beautiful place with a lot of history and culture. The people are friendly and the food is great. I would recommend it to anyone looking for a unique travel experience.',
       author: {
         name: 'Leah Kiehn',
         role: 'Creative Director',

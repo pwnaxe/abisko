@@ -119,8 +119,7 @@ export function Pricing() {
           Pick your package
         </p>
         <p className="mt-4 max-w-xl text-lg tracking-tight text-slate-600">
-          “Everything Starts as a Square” is available in two different packages
-          so you can pick the one that’s right for you.
+          Abisko - The place where all your travel dreams come true. We offer two packages to suit your needs.
         </p>
       </Container>
       <div className="mx-auto mt-16 max-w-5xl lg:px-6">
@@ -131,7 +130,7 @@ export function Pricing() {
             price="15"
             href="#"
             features={[
-              'The 240-page ebook',
+              'My personal activity',
               'Figma icon templates',
               'Community access',
             ]}
