@@ -1,58 +1,64 @@
-import { Author } from '@/components/Author'
-import { Footer } from '@/components/Footer'
-import { FreeChapters } from '@/components/FreeChapters'
-import { Hero } from '@/components/Hero'
-import { Introduction } from '@/components/Introduction'
-import { NavBar } from '@/components/NavBar'
-import { Pricing } from '@/components/Pricing'
-import { Resources } from '@/components/Resources'
-import { Screencasts } from '@/components/Screencasts'
-import { TableOfContents } from '@/components/TableOfContents'
-import { Testimonial } from '@/components/Testimonial'
-import { Testimonials } from '@/components/Testimonials'
-import avatarImage1 from '@/images/avatars/avatar-1.png'
-import avatarImage2 from '@/images/avatars/avatar-2.png'
+import Image from 'next/image';
+
+const back = {
+  zIndex: -1,
+};
 
 export default function Home() {
   return (
-    <>
-      <Hero />
-      <Introduction />
-      <NavBar />
-      <TableOfContents />
-      <Testimonial
-        id="testimonial-from-tommy-stroman"
-        author={{
-          name: 'Tommy Stroman',
-          role: 'Front-end developer',
-          image: avatarImage1,
-        }}
-      >
-        <p>
-          “I didn’t know a thing about icon design until I read this book. Now I
-          can create any icon I need in no time. Great resource!”
-        </p>
-      </Testimonial>
-      <Screencasts />
-      <Testimonial
-        id="testimonial-from-gerardo-stark"
-        author={{
-          name: 'Gerardo Stark',
-          role: 'Creator of Pandemicons',
-          image: avatarImage2,
-        }}
-      >
-        <p>
-          “I’ve tried to create my own icons in the past but quickly got
-          frustrated and gave up. Now I sell my own custom icon sets online.”
-        </p>
-      </Testimonial>
-      <Resources />
-      <FreeChapters />
-      <Pricing />
-      <Testimonials />
-      <Author />
-      <Footer />
-    </>
-  )
+    <main className='w-full h-auto'>
+      <Image
+        src='/img/hero.png'
+        fill
+        alt='Abisko'
+        sizes="100vw"
+        quality={80}
+        style={back}
+      />
+      <nav>
+        <div className='flex flex-row justify-between'>
+          <Image
+            src='/svg/logoWhite.svg'
+            alt='Abisko logo'
+            width={200}
+            height={200}
+          />
+          <div>
+            <ol className='flex flex-row space-x-4 items-center justify-center grow'>
+              <li>
+                <a href='#'>
+                  Atrakcje
+                </a>
+              </li>
+              <li>
+                <a href='#'>
+                  Aurora
+                </a>
+              </li>
+              <li>
+                <a href='#'>
+                  Blog
+                </a>
+              </li>
+              <li>
+                <a href='#'>
+                  Poradniki
+                </a>
+              </li>
+              <li>
+                <a href='#'>
+                  O nas
+                </a>
+              </li>              
+            </ol>
+          </div> 
+          <div className=''>
+          <button className='bg-white text-black rounded-lg p-2'>
+            PL
+          </button>
+          </div>         
+        </div>
+      </nav>
+    </main>
+  );
 }
