@@ -13,6 +13,21 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        aquamarine: {
+        '50': '#e7fff9',
+        '100': '#c6ffef',
+        '200': '#92ffe6',
+        '300': '#4dffde',
+        '400': '#00f8ca',
+        '500': '#00e8bb',
+        '600': '#00be9a',
+        '700': '#009880',
+        '800': '#007867',
+        '900': '#006256',
+        '950': '#003832',
+    },
+      }
     },
   },
   plugins: [],
