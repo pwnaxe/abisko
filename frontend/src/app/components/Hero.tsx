@@ -26,9 +26,9 @@ export default function Hero() {
       <h1 className='text-7xl text-center'>Wyrusz w podróż <br />
       i odkryj magię Laponii</h1>
       <div className='flex justify-center mt-7 gap-4'> 
-      <button className='border border-white rounded-full px-5 py-3'>Odkryj Laponię</button>
-      <button className='border border-white rounded-full px-5 py-3'>Przygotuj się do wyjazdu</button>
-      <button className='border border-white rounded-full px-5 py-3'>Znajdź atrakcje</button>
+      <button className='border border-white rounded-full hover:bg-white hover:text-black px-5 py-3'>Odkryj Laponię</button>
+      <button className='border border-white rounded-full hover:bg-white hover:text-black px-5 py-3'>Przygotuj się do wyjazdu</button>
+      <button className='border border-white rounded-full hover:bg-white hover:text-black px-5 py-3'>Znajdź atrakcje</button>
       </div>
       </div>
       <Footer />
