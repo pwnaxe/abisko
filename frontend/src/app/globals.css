@@ -5,3 +5,6 @@
 :root {
     color: #F6FCFF;
 }
+.subtitle { 
+    @apply  text-sm uppercase tracking-[5px] font-bold text-[#00F8CA]
+ }

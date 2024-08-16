@@ -26,8 +26,12 @@ const config: Config = {
         '800': '#007867',
         '900': '#006256',
         '950': '#003832',
-    },
-      }
+        },
+      },
+      fontFamily: {
+        nunito: ['var(--font-nunito)', 'sans-serif'],
+        lora: ['var(--font-lora)', 'serif'],
+      },
     },
   },
   plugins: [],
