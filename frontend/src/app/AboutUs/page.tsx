@@ -24,7 +24,7 @@ export default function AboutUsPage() {
       </div>
     </div>
     <div className='p-20 text-black w-4/5 mx-auto'>
-    <div className='flex'>
+    <div className='flex pb-10'>
       <Image src='/img/AboutUs.png' alt='ImageofCrew' width={515} height={515} />
       <div className='p-10'>
       <h2 className='text-3xl'>Kim jesteśmy?</h2>
@@ -35,14 +35,18 @@ export default function AboutUsPage() {
       <Image src='/img/sign.png' alt='sign' width={150} height={80} className='' />
       </div>
     </div>
-    <div className='relative w-screen h-[48vh]'>
-    <Image src='/img/rectangle.png' alt='background' fill
-        style={back}
-        className="object-cover" />
-    <div className='relative z-10 p-20'>
-      <p className='text-xl text-center w-4/5'>Piękno Laponii urzekło nas od pierwszego spojrzenia. <br /> Ta magiczna kraina stała się naszym domem,<br /> miejscem, gdzie każdy dzień przynosi nowe, niezapomniane przygody.
-      </p>
     </div>
+    <div className='relative w-screen h-[48vh] text-black'>
+    <Image src='/img/AboutUs.webp' alt='background' fill
+        style={back}
+        className="object-cover bg-aquamarine-400 opacity-55" />
+    <div className='relative z-10'>
+    <p className='text-3xl mx-auto pt-28 text-center'>
+  Piękno Laponii urzekło nas od pierwszego <br /> spojrzenia. 
+  Ta <strong className="font-bold">magiczna kraina</strong> stała się naszym <br />
+  <strong className="font-bold">domem</strong>, 
+  miejscem, gdzie każdy dzień przynosi<br /> nowe, niezapomniane przygody.
+</p>
     </div>
     </div>
     </>
