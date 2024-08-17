@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 function SmallBlogCard() {
@@ -22,9 +23,12 @@ function SmallBlogCard() {
             et sagittis pretium.
           </p>
 
-          <button className='px-6 py-2 text-white font-bold rounded-full'>
-            Kup teraz
-          </button>
+          <Link
+            href='/Blog/sample-post'
+            className='inline-block px-6 py-2 border text-white font-bold rounded-full'
+          >
+            Czytaj więcej
+          </Link>
         </div>
       </div>
     </div>

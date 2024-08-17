@@ -35,7 +35,7 @@ function HorizontalBlogCard() {
         </p>
       </div>
       <div className='flex basis-2/12'>
-        <Link href='#' className='py-4 flex gap-2 items-center'>
+        <Link href='/Blog/sample-post' className='py-4 flex gap-2 items-center'>
           Czytaj więcej
           <MdArrowOutward size={24} />
         </Link>

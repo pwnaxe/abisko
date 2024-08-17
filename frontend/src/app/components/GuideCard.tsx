@@ -31,7 +31,10 @@ function GuideCard() {
 
           <div className='flex justify-between items-center text-white'>
             <p>Data publikacji</p>
-            <Link href='#' className='py-4 flex gap-2 items-center'>
+            <Link
+              href='/Guides/sample-guide'
+              className='py-4 flex gap-2 items-center'
+            >
               Czytaj więcej
               <MdArrowOutward size={24} />
             </Link>

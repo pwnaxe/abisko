@@ -42,7 +42,10 @@ function FeaturedBlogCard() {
           viverra orci.
         </p>
         <div className='flex justify-end'>
-          <Link href='#' className='py-4 flex gap-2 items-center'>
+          <Link
+            href='/Blog/sample-post'
+            className='py-4 flex gap-2 items-center'
+          >
             Czytaj więcej
             <MdArrowOutward size={24} />
           </Link>
