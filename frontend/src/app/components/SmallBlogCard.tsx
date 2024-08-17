@@ -4,7 +4,7 @@ import React from 'react';
 function SmallBlogCard() {
   return (
     <div className='shadow-xl rounded-3xl overflow-hidden'>
-      <div className='relative h-full'>
+      <div className='relative h-full '>
         <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/50 to-transparent'></div>
         <Image
           src='/img/hero.png'
@@ -22,7 +22,7 @@ function SmallBlogCard() {
             et sagittis pretium.
           </p>
 
-          <button className='px-6 py-2 border-2 border-white text-white font-bold rounded-full'>
+          <button className='px-6 py-2 text-white font-bold rounded-full'>
             Kup teraz
           </button>
         </div>
