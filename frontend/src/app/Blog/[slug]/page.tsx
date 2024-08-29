@@ -1,24 +1,66 @@
+'use client';
 import AttractionCard from '@/app/components/AttractionCard';
 import SmallBlogCard from '@/app/components/SmallBlogCard';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getBlogPost } from '../../../../utils/posts';
+import CategoryLabel from '@/app/components/CategoryLabel';
 
-function BlogPost() {
+interface Props {
+  params: any;
+}
+
+function BlogPost({ params: { slug } }: Props) {
+  console.log('slug', slug);
+  const [post, setPost] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const data = await getBlogPost('/api/blog-posts', slug);
+      setPost(data);
+      setIsLoading(true);
+    };
+
+    fetchPosts();
+  }, []);
+
+  console.log('[POST PAGE]: ', post);
+  if (!isLoading) {
+    return <p>Loading....</p>;
+  }
+
   return (
     <>
-      <div className='h-[500px] relative flex items-end justify-center bg-[url(/img/AboutUs.webp)] bg-bottom bg-cover'>
-        <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/50 to-transparent -z-0'></div>
+      <div
+        className='h-[500px] reative flex items-end justify-center'
+        style={{
+          backgroundImage: `url(${post.image})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        <div className='absolute top-0 left-0 w-full h-[500px] bg-gradient-to-t from-black/50 to-transparent -z-0'></div>
         <div className='mb-48 z-10'>
           <p className='subtitle text-center'>subtitle</p>
-          <p className='font-lora text-3xl'>
-            Czy w wakacje zobaczę zorzę polarną?
-          </p>
+          <p className='font-lora text-3xl'>{post.title}</p>
           <div className='mt-2 flex gap-4 justify-center'>
-            <p>Kategorie</p>
+            {post.category.length > 0 &&
+              post.category.map((category: any) => (
+                <CategoryLabel
+                  key={category.name}
+                  name={category.name}
+                  color={category.color}
+                  setCurrentCategory=''
+                />
+              ))}
           </div>
         </div>
       </div>
       <div className='max-w-screen-lg mx-auto text-black my-16'>
-        <p className='uppercase opacity-30 mb-8'>18 sierpień 2024</p>
+        <p className='uppercase opacity-30 mb-8'>
+          {' '}
+          {new Date(post.date).toLocaleDateString()}
+        </p>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in turpis
           augue. Ut et ligula non lectus ornare laoreet vitae id neque. Fusce ac

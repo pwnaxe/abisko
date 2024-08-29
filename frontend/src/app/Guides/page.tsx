@@ -1,8 +1,41 @@
-import React from 'react';
+'use client';
+import React, { useEffect, useState } from 'react';
 import BigGuideCard from '../components/BIgGuideCard';
 import GuideCard from '../components/GuideCard';
+import { getGuidesCategories, getGuidesPosts } from '../../../utils/guides';
+import { DataItem } from '../../../utils/posts';
+import CategoryLabel from '../components/CategoryLabel';
 
 function GuidesListPage() {
+  const [posts, setPosts] = useState<DataItem[]>([]);
+  const [articlesToShow, setAtriclesToShow] = useState(9);
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentCategory, setCurrentCategory] = useState('');
+  const [blogCategories, setBlogCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const data = await getGuidesPosts(
+        '/api/guide-posts',
+        articlesToShow,
+        currentCategory
+      );
+      setPosts(data);
+      setIsLoading(true);
+    };
+
+    fetchPosts();
+  }, [currentCategory]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      const data = await getGuidesCategories('/api/guide-categories');
+      setBlogCategories(data as any);
+    };
+    fetchCategories();
+  }, []);
+  console.log('[Guides Page]', posts);
+
   return (
     <>
       <div className='h-[500px] relative flex items-end justify-center bg-[url(/img/guides-img.jpg)] bg-bottom bg-cover'>
@@ -15,19 +48,56 @@ function GuidesListPage() {
         </div>
       </div>
       <div className='max-w-screen-xl mx-auto text-black'>
-        <div className='my-16'>Wybierz kategorię:</div>
+        <div className='my-16 flex gap-4 items-center'>
+          <div onClickCapture={() => setCurrentCategory('')}>
+            {currentCategory === '' ? (
+              <p>Wybierz kategorie:</p>
+            ) : (
+              <p className='px-4 py-1  rounded-full border hover:cursor-pointer'>
+                Wszystkie
+              </p>
+            )}
+          </div>
+          <div className='flex gap-2'>
+            {blogCategories.length > 0 &&
+              blogCategories.map((category: any) => (
+                <CategoryLabel
+                  key={category.name}
+                  name={category.name}
+                  color={category.color}
+                  setCurrentCategory={setCurrentCategory}
+                />
+              ))}
+          </div>
+        </div>
         <div className=''>
-          <BigGuideCard />
+          {posts.length > 0 &&
+            posts.map(
+              (post: any) =>
+                post.featured && (
+                  <BigGuideCard
+                    key={post.slug}
+                    post={post}
+                    isLoading={isLoading}
+                  />
+                )
+            )}
+
           <div className='grid grid-cols-3 gap-8 my-8'>
-            <GuideCard />
-            <GuideCard />
+            {posts.length > 0 &&
+              posts.map(
+                (post: any) =>
+                  !post.featured && (
+                    <GuideCard
+                      key={post.slug}
+                      post={post}
+                      isLoading={isLoading}
+                    />
+                  )
+              )}
           </div>
           <div className='grid grid-cols-3 gap-8 my-8'>
-            <div className='col-span-2'>
-              <BigGuideCard />
-            </div>
-
-            <GuideCard />
+            <div className='col-span-2'></div>
           </div>
         </div>
       </div>
