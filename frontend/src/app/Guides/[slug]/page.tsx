@@ -1,8 +1,33 @@
+'use client';
 import AttractionCard from '@/app/components/AttractionCard';
 import SmallBlogCard from '@/app/components/SmallBlogCard';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getGuidePost } from '../../../../utils/guides';
+import CategoryLabel from '@/app/components/CategoryLabel';
 
-function GuidePost() {
+interface Props {
+  params: any;
+}
+
+function GuidePost({ params: { slug } }: Props) {
+  const [post, setPost] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const data = await getGuidePost('/api/blog-posts', slug);
+      setPost(data);
+      setIsLoading(true);
+    };
+
+    fetchPosts();
+  }, []);
+
+  console.log('[POST PAGE]: ', post);
+  if (!isLoading) {
+    return <p>Loading....</p>;
+  }
+
   return (
     <>
       <div className='h-[500px] relative flex items-end justify-center bg-[url(/img/AboutUs.webp)] bg-bottom bg-cover'>
@@ -10,14 +35,22 @@ function GuidePost() {
       </div>
       <div className='max-w-screen-lg mx-auto text-black my-16'>
         <div className='mt-2 flex gap-4 justify-center'>
-          <p>Kategorie</p>
+          {post.category.length > 0 &&
+            post.category.map((category: any) => (
+              <CategoryLabel
+                key={category.name}
+                name={category.name}
+                color={category.color}
+                setCurrentCategory=''
+              />
+            ))}
         </div>
         <p className='uppercase opacity-30 my-4 text-center'>
-          18 sierpień 2024
+          {new Date(post.date).toLocaleDateString()}
         </p>
         <div className='mb-8 z-10'>
           <p className='font-lora text-3xl text-center w-1/2 mx-auto'>
-            Chcę się ubrać na pierwszą wyprawę w góry, ale nie wiem jak...
+            {post.title}
           </p>
         </div>
         <p>
