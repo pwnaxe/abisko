@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function Navbar() {
   return (
     <nav
-      className='max-w-screen-2xl flex justify-between items-center absolute top-0 left-1/2 -translate-x-1/2 py-4 px-11 z-50 w-full'
+      className='max-w-screen-2xl flex justify-between items-center absolute top-0 left-1/2 -translate-x-1/2 py-4 px-11 z-50 w-full text-white'
       role='navigation'
     >
       <Link href='/'>
