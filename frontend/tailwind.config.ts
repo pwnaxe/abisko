@@ -27,6 +27,19 @@ const config: Config = {
   				'900': '#006256',
   				'950': '#003832'
   			},
+			midnightNavy: {
+				'50': '#eef8ff',
+				'100': '#dcf0ff',
+				'200': '#b2e3ff',
+				'300': '#6dcdff',
+				'400': '#20b4ff',
+				'500': '#009aff',
+				'600': '#007adf',
+				'700': '#0061b4',
+				'800': '#005295',
+				'900': '#00437a',
+				'950': '#00284d',
+			},
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
