@@ -7,6 +7,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import Image from 'next/image';
+import SmallBlogCard from './SmallBlogCard';
 
 function HeroSlider() {
   return (
@@ -116,9 +117,9 @@ function HeroSlider() {
   </div>
           </CarouselItem>
           <CarouselItem className='w-full m-0 p-0'>
-            <div className='h-screen flex items-center justify-center relative'>
+            <div className='h-screen flex flex-col items-center justify-center relative'>
               <Image
-                src='/img/hero4.png'
+                src='/img/hero5.png'
                 fill
                 alt='Abisko'
                 loading='lazy'
@@ -126,8 +127,14 @@ function HeroSlider() {
                 quality={80}
                 className='-z-10 h-full'
               />
-              <div className='absolute inset-0 bg-gradient-to-b from-[rgba(9,40,75,0.3)] to-white opacity-30 h-screen z-0'></div>
-              
+              <div className='absolute inset-0 bg-midnightNavy-950 opacity-40 h-screen z-0'></div>
+              <h2 className='text-lg font-bold text-center uppercase opacity-60 tracking-widest z-10'>Twoja podróż zaczyna się tutaj</h2>
+              <h1 className='text-7xl text-center font-lora leading-tight z-10'>Odkryj nasze przewodniki <br /> i wyrusz w podróż po Laponii</h1>
+              <div className='flex flex-row justify-center w-1/3 h-1/3 mt-7 gap-4 z-10'>
+                <SmallBlogCard />
+                <SmallBlogCard />
+                <SmallBlogCard />
+              </div>
             </div>
           </CarouselItem>
         </CarouselContent>

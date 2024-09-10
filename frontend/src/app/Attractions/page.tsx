@@ -38,24 +38,41 @@ export default function AttractionsPage() {
       <div className='max-w-screen-xl mx-auto text-black'>
         <div className='grid grid-cols-1 md:grid-cols-3 my-8 gap-6'>
           <SmallBlogCard />
-          <AttractionCard
-            title="Fjords Sightseeing and Photography Tour (Autumn/Winter)"
-            rating="4.9"
-            location="Fjords"
-            duration="4 godziny"
-            price="1000"
-            widgetId="CHECKFRONT_WIDGET_01"
-            checkfrontId="2" // ID dla atrakcji Fjords
-          />
-          <AttractionCard
-            title="Hikes in Abisko"
-            rating="4.7"
-            location="Abisko"
-            duration="6 godzin"
-            price="800"
-            widgetId="CHECKFRONT_WIDGET_02"
-            checkfrontId="4" // ID dla atrakcji Hikes
-          />
+          {/* Trollsjön */}
+      <AttractionCard
+        title="Trollsjön"
+        rating={4.8}
+        location="Laponia"
+        duration="3 godziny"
+        price={250}
+        widgetId="CHECKFRONT_WIDGET_01"
+        itemId="2"          // ID dla Trollsjön
+        categoryId="2"
+      />
+
+      {/* Fjords */}
+      <AttractionCard
+        title="Fjords"
+        rating={4.7}
+        location="Norwegia"
+        duration="5 godzin"
+        price={400}
+        widgetId="CHECKFRONT_WIDGET_02"
+        itemId="3"          // ID dla Fjords
+        categoryId="3"
+      />
+
+      {/* Hikes in Abisko */}
+      <AttractionCard
+        title="Hikes in Abisko"
+        rating={4.9}
+        location="Abisko"
+        duration="8 godzin"
+        price={350}
+        widgetId="CHECKFRONT_WIDGET_03"
+        itemId="4"          // ID dla Hikes in Abisko
+        categoryId="2"
+      />
         </div>
       </div>
 
