@@ -93,6 +93,7 @@ function HeroSlider() {
 </CarouselItem>
           <CarouselItem className='w-full m-0 p-0'>
             <div className='h-screen flex items-center justify-center relative'>
+<<<<<<< HEAD
           <Image
           src='/img/hero2.png'
           fill
@@ -115,11 +116,49 @@ function HeroSlider() {
       </h2>
     </div>
   </div>
+=======
+              <Image
+                src='/img/hero-img-2.png'
+                fill
+                alt='Abisko'
+                sizes='100%'
+                loading='lazy'
+                quality={80}
+                className='-z-10 h-full w-auto object-cover'
+              />
+              <div className='absolute inset-0 bg-black opacity-30 z-0'></div>
+              <div className='z-10 max-w-screen-xl mx-auto'>
+                <p className='subtitle'>Nasz besteller</p>
+                <h2 className='text-4xl font-bold uppercase mb-4 tracking-widest'>
+                  Zorza polarna
+                </h2>
+                <p className='uppercase mb-2'>Abisko, Szwecja</p>
+                <p className='w-1/2'>
+                  Phasellus vulputate maximus dolor eu porttitor. Duis
+                  ullamcorper molestie magna, id mattis lorem eleifend a. Donec
+                  sit amet quam magna. Nullam suscipit libero sit amet elit
+                  hendrerit scelerisque sed sed tellus. Cras eleifend est ac
+                  aliquet cursus. Phasellus nulla dolor, tristique vel fringilla
+                  sit amet, dictum sed arcu.
+                </p>
+                <div className='flex gap-8 my-8 items-center'>
+                  <p className='text-3xl font-bold'>1000 zł</p>
+                  <button className='py-1 px-4 border-2 border-white rounded-full'>
+                    Kup teraz
+                  </button>
+                </div>
+              </div>
+            </div>
+>>>>>>> 9578032 (updated hero slider)
           </CarouselItem>
           <CarouselItem className='w-full m-0 p-0'>
             <div className='h-screen flex flex-col items-center justify-center relative'>
               <Image
+<<<<<<< HEAD
                 src='/img/hero5.png'
+=======
+                src='/img/hero-img-3.png'
+>>>>>>> 9578032 (updated hero slider)
                 fill
                 alt='Abisko'
                 loading='lazy'
