@@ -13,7 +13,7 @@ export default function AboutUsPage() {
         <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/50 to-transparent -z-0'></div>
         <div className='mb-48 z-10'>
           <p className='subtitle text-center'>poznajmy się</p>
-          <p className='font-lora text-3xl'>
+          <p className='pageTitle'>
             Jesteśmy tu dla Ciebie z miłości do Laponii
           </p>
         </div>

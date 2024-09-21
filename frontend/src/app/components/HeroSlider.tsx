@@ -8,6 +8,10 @@ import {
 } from '@/components/ui/carousel';
 import Image from 'next/image';
 import SmallBlogCard from './SmallBlogCard';
+import { MdFamilyRestroom } from 'react-icons/md';
+import { IoPeopleSharp } from 'react-icons/io5';
+import { GiForestCamp } from 'react-icons/gi';
+import { RiMapPin2Line } from 'react-icons/ri';
 
 function HeroSlider() {
   return (
@@ -58,12 +62,17 @@ function HeroSlider() {
                 className='-z-10 h-full object-cover'
               />
               <div className='absolute inset-0 bg-gradient-to-b from-[rgba(9,40,75,0.3)] to-white opacity-30 h-screen z-0'></div>
-              <div className='z-10 max-w-lg p-8 md:p-16 text-white absolute left-8 md:left-16 bottom-32'>
-                <h2 className='text-sm uppercase tracking-wide font-semibold text-green-300'>
-                  Nasz Bestseller
-                </h2>
-                <h1 className='text-5xl font-bold'>Zorza Polarna</h1>
-                <p className='text-lg mt-4'>Abisko, Szwecja</p>
+              <div className='z-10 max-w-2xl p-8 md:p-16 text-white absolute left-8 md:left-16 bottom-32'>
+                <h2 className='subtitle'>Nasz Bestseller</h2>
+                <h1 className='text-5xl font-bold uppercase my-2 tracking-[5px]'>
+                  Zorza Polarna
+                </h1>
+                <p className='text-lg mt-4 flex gap-2 uppercase tracking-widest'>
+                  <span>
+                    <RiMapPin2Line size={24} color={'#00F8CA'} />
+                  </span>
+                  Abisko, Szwecja
+                </p>
                 <p className='text-sm mt-4'>
                   Phasellus vulputate maximus dolor eu porttitor. Duis
                   ullamcorper molestie magna, id mattis lorem eleifend a. Donec
@@ -72,15 +81,21 @@ function HeroSlider() {
                 </p>
                 <div className='flex flex-col space-y-2 mt-6'>
                   <div className='flex items-center space-x-2'>
-                    <span>👥</span>
+                    <span>
+                      <IoPeopleSharp size={24} color={'#00F8CA'} />
+                    </span>
                     <p>Max. 5 osób</p>
                   </div>
                   <div className='flex items-center space-x-2'>
-                    <span>🌴</span>
+                    <span>
+                      <GiForestCamp size={24} color={'#00F8CA'} />
+                    </span>
                     <p>Odpoczynek</p>
                   </div>
                   <div className='flex items-center space-x-2'>
-                    <span>👨‍👩‍👧‍👦</span>
+                    <span>
+                      <MdFamilyRestroom size={24} color={'#00F8CA'} />
+                    </span>
                     <p>Przyjazny dla dzieci</p>
                   </div>
                 </div>
@@ -132,7 +147,7 @@ function HeroSlider() {
               <h1 className='text-7xl text-center font-lora leading-tight z-10'>
                 Odkryj nasze przewodniki <br /> i wyrusz w podróż po Laponii
               </h1>
-              <div className='flex flex-row justify-center w-1/3 h-1/3 mt-7 gap-4 z-10'>
+              <div className='grid grid-cols-3 gap-8 max-w-screen-lg mx-auto mt-8 min-h-96'>
                 <SmallBlogCard />
                 <SmallBlogCard />
                 <SmallBlogCard />

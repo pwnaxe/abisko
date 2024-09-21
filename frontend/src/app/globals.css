@@ -8,6 +8,9 @@
 .subtitle { 
     @apply  text-sm uppercase tracking-[5px] font-bold text-[#00F8CA]
  }
+ .pageTitle {
+  @apply font-lora text-3xl text-white
+ }
 @layer base {
   :root {
         --background: 0 0% 100%;

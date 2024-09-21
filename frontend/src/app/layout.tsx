@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { nunito, lora } from './fonts';
 import './globals.css';
 import Navbar from './components/Navbar';
-import Footer from './components/Footer';
 
 export const metadata: Metadata = {
   title: 'Abisko',
@@ -19,7 +18,6 @@ export default function RootLayout({
       <body className='font-nunito'>
         <Navbar />
         {children}
-        {/* <Footer /> */}
       </body>
     </html>
   );
