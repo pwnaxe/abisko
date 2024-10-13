@@ -82,13 +82,13 @@ export default function AboutUsPage() {
           </p>
         </div>
       </div>
-      <div className='bg-[#0082C8]/35'>
+      {/* <div className='bg-[#0082C8]/35'>
         <div className='max-w-screen-xl mx-auto text-black py-32 grid grid-cols-3 gap-8'>
           <TestimonialCard />
           <TestimonialCard />
           <TestimonialCard />
         </div>
-      </div>
+      </div> */}
       <div className='max-w-screen-xl mx-auto text-black py-32 '>
         <p>Obserwuj na w social mediach</p>
       </div>
