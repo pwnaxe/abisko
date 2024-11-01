@@ -72,7 +72,7 @@ async function HeroSlider() {
               />
               <div className='z-10 max-w-2xl text-white flex flex-col space-y-9 ml-40'>
                 <h2 className='subtitle'>Nasz Bestseller</h2>
-                <h1 className='text-5xl font-bold uppercase my-2 tracking-[5px]'>
+                <h1 className='text-2xl lg:text-5xl font-bold uppercase my-2 tracking-[5px]'>
                   Zorza Polarna
                 </h1>
                 <p className='text-lg mt-4 flex gap-2 uppercase tracking-widest'>
@@ -81,7 +81,7 @@ async function HeroSlider() {
                   </span>
                   Abisko, Szwecja
                 </p>
-                <p className='text-sm mt-4'>
+                <p className='text-xs lg:text-sm mt-4 mr-24 lg:mr-0'>
                   Phasellus vulputate maximus dolor eu porttitor. Duis
                   ullamcorper molestie magna, id mattis lorem eleifend a. Donec
                   sit amet quam magna. Nullam suscipit libero sit amet elit
@@ -110,7 +110,7 @@ async function HeroSlider() {
                     <p>Przyjazny dla dzieci</p>
                   </div>
                 </div>
-                <button className='mt-6 border border-white rounded-full hover:bg-white hover:text-black w-1/3 py-3 transition-all duration-1000'>
+                <button className='mt-6 border border-white rounded-full hover:bg-white hover:text-black w-2/3 sm:w-1/3 py-3 transition-all duration-1000'>
                   Odkryj atrakcje
                 </button>
               </div>
@@ -128,8 +128,8 @@ async function HeroSlider() {
                 className='-z-10 h-full w-auto object-cover brightness-50'
               />
               <div className='absolute inset-0 bg-midnightNavy-950 opacity-30 z-0'></div>
-              <div className='mx-auto w-1/3 space-y-6 text-white z-10'>
-                <h1 className='text-4xl text-white font-lora leading-tight text-center'>
+              <div className='mx-auto w-2/3 xl:w-1/3 space-y-6 text-white z-10'>
+                <h1 className='text-2xl lg:text-4xl text-white font-lora leading-tight text-center'>
                   Piękno Laponii urzekło nas od pierwszego spojrzenia. Ta
                   magiczna kraina stała się naszym domem, miejscem, gdzie każdy
                   dzień przynosi nowe, niezapomniane przygody.

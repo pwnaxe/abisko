@@ -31,7 +31,7 @@ export default function Footer({ page = '' }: { page: string }) {
               <FaInstagram size={40} />
             </a>
           </div>
-          <p className='text-sm'>Skontaktuj się z nami</p>
+          <Link href='/Contact'>Skontaktuj się z nami</Link>
         </div>
         <div className='flex gap-x-4 text-sm'>
           <Link href='/Regulamin'>Regulamin</Link>

@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { BlocksRenderer } from '@strapi/blocks-react-renderer';
 
+
 function SmallBlogCard({ title, shortContent, poster, slug, className }) {
   const posterUrl = `https://api.expeditionlapland.com${poster}`;
 
