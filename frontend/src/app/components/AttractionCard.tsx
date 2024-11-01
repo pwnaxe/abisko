@@ -1,33 +1,47 @@
 import React, { useState, useEffect } from 'react';
+import Script from 'next/script';
 
-function AttractionCard({ title, rating, location, duration, price, widgetId, itemId, categoryId }) {
+interface AttractionCardProps {
+  title: string;
+  rating: number;
+  location: string;
+  duration: string;
+  price: string;
+  widgetId: string;
+  itemId: string;
+  categoryId: string;
+  host: string;
+  tid?: string;
+}
+
+const AttractionCard: React.FC<AttractionCardProps> = ({
+  title,
+  rating,
+  location,
+  duration,
+  price,
+  widgetId,
+  itemId,
+  categoryId,
+  host,
+  tid = 'Lukaz',
+}) => {
   const [showBooking, setShowBooking] = useState(false);
 
   useEffect(() => {
-    if (showBooking) {
-      // Dynamicznie ładowanie widgetu Checkfront
-      const script = document.createElement('script');
-      script.src = "//explorearctic.checkfront.com/lib/interface--0.js";
-      script.async = true;
-      document.body.appendChild(script);
-
-      script.onload = () => {
-        new DROPLET.Widget({
-          host: 'explorearctic.checkfront.com',
-          target: widgetId,
-          item_id: itemId,
-          category_id: categoryId,
-          options: 'category_select,hidesearch',
-          provider: 'droplet'
-        }).render();
-      };
-
-      // Sprzątanie po usunięciu widgetu
-      return () => {
-        document.body.removeChild(script);
-      };
+    if (showBooking && typeof window !== 'undefined') {
+      // Inicjalizacja widżetu Checkfront po stronie klienta
+      new DROPLET.Widget({
+        host: host,
+        target: widgetId,
+        item_id: itemId,
+        category_id: categoryId,
+        tid: tid,
+        options: 'category_select,hidesearch',
+        provider: 'droplet',
+      }).render();
     }
-  }, [showBooking, widgetId, itemId, categoryId]);
+  }, [showBooking, widgetId, itemId, categoryId, host, tid]);
 
   return (
     <div className='shadow-xl rounded-3xl overflow-hidden'>
@@ -53,7 +67,7 @@ function AttractionCard({ title, rating, location, duration, price, widgetId, it
             <p
               id="CHECKFRONT_LOADER"
               style={{
-                background: "url('//explorearctic.checkfront.com/images/loader.gif') left center no-repeat",
+                background: `url('//${host}/images/loader.gif') left center no-repeat`,
                 padding: '5px 5px 5px 20px',
               }}
             >
@@ -72,8 +86,9 @@ function AttractionCard({ title, rating, location, duration, price, widgetId, it
           </button>
         </div>
       </div>
+      <Script src={`//${host}/lib/interface--0.js`} strategy="lazyOnload" />
     </div>
   );
-}
+};
 
 export default AttractionCard;

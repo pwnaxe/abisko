@@ -1,11 +1,28 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { CiSearch } from 'react-icons/ci';
 import AttractionCard from '../components/AttractionCard';
 import SmallBlogCard from '../components/SmallBlogCard';
-import CheckfrontWidget from '@/components/checkfront';
 
 export default function AttractionsPage() {
+  const [attractions, setAttractions] = useState([]);
+
+  useEffect(() => {
+    // Fetching attractions data from API/endpoint
+    const fetchAttractions = async () => {
+      try {
+        const response = await fetch('/api/attractions'); // Zakładamy, że endpoint '/api/attractions' zwraca dane atrakcji
+        const data = await response.json();
+        setAttractions(data);
+      } catch (error) {
+        console.error('Błąd podczas pobierania atrakcji:', error);
+      }
+    };
+
+    fetchAttractions();
+  }, []);
+
   return (
     <>
       <div className='h-[500px] relative flex items-end justify-center bg-[url(/img/AboutUs.webp)] bg-bottom bg-cover'>
@@ -34,33 +51,24 @@ export default function AttractionsPage() {
       <div className='max-w-screen-xl mx-auto text-black'>
         <div className='grid grid-cols-1 md:grid-cols-3 my-8 gap-6'>
           <SmallBlogCard />
-          
-          <AttractionCard
-            title="Trollsjön"
-            rating={4.8}
-            location="Laponia"
-            duration="3 godziny"
-            price={250}
-          />
-          <CheckfrontWidget widgetId="CHECKFRONT_WIDGET_01" itemId="6" categoryId="2" />
-
-          <AttractionCard
-            title="Fjords"
-            rating={4.7}
-            location="Norwegia"
-            duration="5 godzin"
-            price={400}
-          />
-          <CheckfrontWidget widgetId="CHECKFRONT_WIDGET_02" itemId="31,32" categoryId="2" />
-
-          <AttractionCard
-            title="Aurora Snowmobile"
-            rating={4.9}
-            location="Abisko"
-            duration="8 godzin"
-            price={350}
-          />
-          <CheckfrontWidget widgetId="CHECKFRONT_WIDGET_03" itemId="38,39" categoryId="3" />
+          {attractions.length > 0 ? (
+            attractions.map((attraction) => (
+              <AttractionCard
+                key={attraction.id}
+                title={attraction.title}
+                rating={attraction.rating}
+                location={attraction.location}
+                duration={attraction.duration}
+                price={attraction.price}
+                widgetId={`CHECKFRONT_WIDGET_${attraction.id}`}
+                itemId={attraction.itemId}
+                categoryId={attraction.categoryId}
+                host={attraction.host}
+              />
+            ))
+          ) : (
+            <p>Ładowanie atrakcji...</p>
+          )}
         </div>
       </div>
     </>

@@ -5,8 +5,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'api.expeditionlapland.com',
-        port: '',
-        pathname: '/uploads/**',
+        pathname: '/**',
       },
     ],
   },
