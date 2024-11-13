@@ -63,7 +63,7 @@ export default function AboutUsPage() {
           </div>
         </div>
       </div>
-      <div className='relative w-screen h-[48vh] text-black bg-[#00B7A3]/25'>
+      <div className='relative w-screen h-[48vh] text-black bg-[#00B7A3]/5'>
         <Image
           src='/img/AboutUs.webp'
           alt='background'
