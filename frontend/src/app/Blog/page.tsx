@@ -20,7 +20,7 @@ function BlogPage() {
   useEffect(() => {
     const fetchPosts = async () => {
       const data = await getBlogPosts(
-        '/api/blog-posts',
+        '/api/blogs',
         articlesToShow,
         currentCategory
       );
@@ -76,7 +76,7 @@ function BlogPage() {
           {posts.length > 0 &&
             posts.map(
               (post: any) =>
-                post.featured && (
+                post.Featured && (
                   <FeaturedBlogCard key={post.slug} post={post} />
                 )
             )}
@@ -85,7 +85,7 @@ function BlogPage() {
           {posts.length > 0 &&
             posts.map(
               (post: any) =>
-                !post.featured && (
+                !post.Featured && (
                   <HorizontalBlogCard key={post.slug} post={post} />
                 )
             )}

@@ -35,7 +35,7 @@ function HorizontalBlogCard({ post }: any) {
             <p>{new Date(post.date).toLocaleDateString()}</p>
           </div>
           <p className='text-2xl my-4 font-bold'>{post.title}</p>
-          <p>{post.excerpt}</p>
+          {/* <p>{post.excerpt}</p> */}
         </div>
         <div className='flex basis-2/12'>
           <Link

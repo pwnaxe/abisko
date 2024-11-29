@@ -16,7 +16,7 @@ function GuidesListPage() {
   useEffect(() => {
     const fetchPosts = async () => {
       const data = await getGuidesPosts(
-        '/api/guide-posts',
+        '/api/guides',
         articlesToShow,
         currentCategory
       );
@@ -74,7 +74,7 @@ function GuidesListPage() {
           {posts.length > 0 &&
             posts.map(
               (post: any) =>
-                post.featured && (
+                post.Featured && (
                   <BigGuideCard
                     key={post.slug}
                     post={post}
@@ -87,7 +87,7 @@ function GuidesListPage() {
             {posts.length > 0 &&
               posts.map(
                 (post: any) =>
-                  !post.featured && (
+                  !post.Featured && (
                     <GuideCard
                       key={post.slug}
                       post={post}

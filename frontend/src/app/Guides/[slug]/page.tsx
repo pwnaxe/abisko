@@ -15,7 +15,7 @@ function GuidePost({ params: { slug } }: Props) {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const data = await getGuidePost('/api/blog-posts', slug);
+      const data = await getGuidePost('/api/blogs', slug);
       setPost(data);
       setIsLoading(true);
     };
@@ -33,7 +33,7 @@ function GuidePost({ params: { slug } }: Props) {
       <div className='h-[500px] relative flex items-end justify-center bg-[url(/img/AboutUs.webp)] bg-bottom bg-cover'>
         <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/50 to-transparent -z-0'></div>
       </div>
-      <div className='max-w-screen-lg mx-auto text-black my-16'>
+      {/* <div className='max-w-screen-lg mx-auto text-black my-16'>
         <div className='mt-2 flex gap-4 justify-center'>
           {post.category.length > 0 &&
             post.category.map((category: any) => (
@@ -84,11 +84,11 @@ function GuidePost({ params: { slug } }: Props) {
           arcu quis, luctus nisl. Aliquam ac lectus nec mauris scelerisque
           semper. Donec venenatis posuere pretium.
         </p>
-      </div>
+      </div> */}
       <div className='max-w-screen-xl mx-auto grid grid-cols-3 gap-8 text-black'>
-        <SmallBlogCard />
+        {/* <SmallBlogCard />
         <AttractionCard />
-        <AttractionCard />
+        <AttractionCard /> */}
       </div>
     </>
   );

@@ -33,7 +33,7 @@ function FeaturedBlogCard({ post }: any) {
           <p>{new Date(post.date).toLocaleDateString()}</p>
         </div>
         <p className='text-2xl my-4 font-bold'>{post.title}</p>
-        <p>{post.excerpt}</p>
+        {/* <p>{post.excerpt}</p> */}
         <div className='flex justify-end'>
           <Link
             href={`/Blog/${post.slug}`}

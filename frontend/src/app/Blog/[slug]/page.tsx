@@ -16,7 +16,7 @@ function BlogPost({ params: { slug } }: Props) {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const data = await getBlogPost('/api/blog-posts', slug);
+      const data = await getBlogPost('/api/blogs', slug);
       setPost(data);
       setIsLoading(true);
     };
@@ -43,7 +43,7 @@ function BlogPost({ params: { slug } }: Props) {
         <div className='mb-48 z-10'>
           <p className='subtitle text-center'>subtitle</p>
           <p className='font-lora text-3xl'>{post.title}</p>
-          <div className='mt-2 flex gap-4 justify-center'>
+          {/* <div className='mt-2 flex gap-4 justify-center'>
             {post.category.length > 0 &&
               post.category.map((category: any) => (
                 <CategoryLabel
@@ -53,7 +53,7 @@ function BlogPost({ params: { slug } }: Props) {
                   setCurrentCategory=''
                 />
               ))}
-          </div>
+          </div> */}
         </div>
       </div>
       <div className='max-w-screen-lg mx-auto text-black my-16'>
@@ -94,9 +94,9 @@ function BlogPost({ params: { slug } }: Props) {
         </p>
       </div>
       <div className='max-w-screen-xl mx-auto grid grid-cols-3 gap-8 text-black'>
-        <SmallBlogCard />
+        {/* <SmallBlogCard />
         <AttractionCard />
-        <AttractionCard />
+        <AttractionCard /> */}
       </div>
     </>
   );

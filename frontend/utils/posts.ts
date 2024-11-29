@@ -18,14 +18,14 @@ export interface DataItem {
 
 export async function getBlogPosts(endpoint: string, pageSize: number, category: string ): Promise<DataItem[]> {
   const url = new URL(endpoint, baseUrl);
-  const queryParameters = {filters: { blog_categories: {name: { $contains: category }} }, fields: ['Title', 'slug', 'Excerpt', 'createdAt', 'Featured'], populate: {  Thumbnail: { fields: ['url'] }, blog_categories: {  fields: ['*']}  }, pagination: {pageSize},  encodeValuesOnly: true   };
+  const queryParameters = {filters: { blog_categories: {name: { $contains: category }} }, fields: ['title', 'slug', 'shortContent', 'createdAt', 'author', 'Featured'], populate: {  poster: { fields: ['url'] }, blog_categories: {  fields: ['*']}  }, pagination: {pageSize},  encodeValuesOnly: true   };
   const queryString = qs.stringify(queryParameters, { encode: false });
   url.search = queryString;
 console.log('POSTS url', url.href)
   try {
     const response = await fetch(url.href, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
     });
 
@@ -36,16 +36,21 @@ console.log('POSTS url', url.href)
 
     const dataItems: DataItem[] = data.data.map((item: any) => {
       const flattened = flattenAttributes(item);
-    
+    console.log('flattened', flattened)
       return {
         slug: flattened.slug,
-        title: flattened.Title,
-        excerpt: flattened.Excerpt,
+        title: flattened.title,
+        excerpt: flattened.shortContent,
         date: flattened.createdAt,
-        featured: flattened.Featured,
-        category: flattened.blog_categories?.data.map((item: any) => ({name: item.name, color: item.color})),
-        image: flattened.Thumbnail
-        && getStrapiMedia(flattened.Thumbnail.url),
+        author: flattened.author,
+        Featured: flattened.Featured,
+        category: Object.entries( flattened.blog_categories).map(([key, value]: any) => ({
+          name: value.name,
+          color: value.Color,
+        })),
+        // category: flattened.blog_categories?.data.map((item: any) => ({name: item.name, color: item.Color})),
+        image: flattened.poster
+        && getStrapiMedia(flattened.poster.url),
       };
     });
     
@@ -59,14 +64,14 @@ console.log('POSTS url', url.href)
 // GET SINGLE BLOG POST 
 export async function getBlogPost(endpoint: string, pageSlug: string ): Promise<DataItem[]> {
   const url = new URL(endpoint, baseUrl);
-  const queryParameters = {    filters: { slug: { $eq: pageSlug } }, fields: ['Title', 'Excerpt', 'createdAt', 'Body'], populate: {  Thumbnail: { fields: ['url'] }, blog_categories: {  fields: ['*']}  }, pagination: {pageSize: 1, withCount: false },  encodeValuesOnly: true   };
+  const queryParameters = {    filters: { slug: { $eq: pageSlug } }, fields: ['title',  'slug', 'createdAt', 'author', 'createdAt', 'content'], populate: {  poster: { fields: ['url'] }, blog_categories: {  fields: ['*']}  }, pagination: {pageSize: 1, withCount: false },  encodeValuesOnly: true   };
   const queryString = qs.stringify(queryParameters, { encode: false });
   url.search = queryString;
-console.log('POSTS url', url.href)
+console.log('Single POST url', url.href)
   try {
     const response = await fetch(url.href, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
     });
 
@@ -80,13 +85,13 @@ console.log('POSTS url', url.href)
 
     return {
       // @ts-ignore
-      title: flattened.Title,
-      excerpt: flattened.Excerpt,
+      title: flattened.title,
       date: flattened.createdAt,
-      body: flattened.Body,
+      body: flattened.content,
       category: flattened.blog_categories?.data.map((item: any) => ({name: item.name, color: item.color})),
-      image: flattened.Thumbnail
-      && getStrapiMedia(flattened.Thumbnail.url),
+      author: flattened.author,
+      image: flattened.poster
+      && getStrapiMedia(flattened.poster.url),
     };
     
    
@@ -105,7 +110,7 @@ export async function getBlogCategories(endpoint: string): Promise<DataItem[]> {
   try {
     const response = await fetch(url.href, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
     });
     if (!response.ok) {
@@ -118,7 +123,7 @@ export async function getBlogCategories(endpoint: string): Promise<DataItem[]> {
     
       return {
         name: flattened.name,
-        color: flattened.color
+        color: flattened.Color
       };
     });
     

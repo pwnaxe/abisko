@@ -18,14 +18,14 @@ export interface DataItem {
 
 export async function getGuidesPosts(endpoint: string, pageSize: number, category: string ): Promise<DataItem[]> {
   const url = new URL(endpoint, baseUrl);
-  const queryParameters = {filters: { guide_categories: {Name: { $contains: category }} }, fields: ['Title', 'slug', 'excerpt', 'createdAt', 'Featured'], populate: {  Thumbnail: { fields: ['url'] }, guide_categories: {  fields: ['*']}  }, pagination: {pageSize},  encodeValuesOnly: true   };
+  const queryParameters = {filters: { guide_categories: {name: { $contains: category }} }, fields: ['Title', 'slug', 'Excerpt', 'createdAt', 'Featured'], populate: {  image: { fields: ['url'] }, guide_categories: {  fields: ['*']}  }, pagination: {pageSize},  encodeValuesOnly: true   };
   const queryString = qs.stringify(queryParameters, { encode: false });
   url.search = queryString;
-
+console.log('URL', url.search)
   try {
     const response = await fetch(url.href, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
     });
 
@@ -36,16 +36,21 @@ export async function getGuidesPosts(endpoint: string, pageSize: number, categor
 
     const dataItems: DataItem[] = data.data.map((item: any) => {
       const flattened = flattenAttributes(item);
-    
+    console.log('flattened', flattened)
+    const blog_categories = flattened.blog_categories?.data ?? {}; 
       return {
         slug: flattened.slug,
         title: flattened.Title,
-        excerpt: flattened.excerpt,
+        excerpt: flattened.Excerpt,
         date: flattened.createdAt,
         featured: flattened.Featured,
-        category: flattened.guide_categories?.data.map((item: any) => ({name: item.Name, color: item.color})),
-        image: flattened.Thumbnail
-        && getStrapiMedia(flattened.Thumbnail.url),
+        // category: flattened.guide_categories?.data.map((item: any) => ({name: item.Name, color: item.color})),
+        category: Object.entries( blog_categories).map(([key, value]: any) => ({
+          name: value.name,
+          color: value.Color,
+        })),
+        image: flattened.image
+        && getStrapiMedia(flattened.image.url),
       };
     });
     
@@ -66,7 +71,7 @@ console.log('POSTS url', url.href)
   try {
     const response = await fetch(url.href, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
     });
 
@@ -105,7 +110,7 @@ export async function getGuidesCategories(endpoint: string): Promise<DataItem[]>
   try {
     const response = await fetch(url.href, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        // Authorization: `Bearer ${token}`,
       },
       cache: 'no-cache'
     });
@@ -117,8 +122,8 @@ export async function getGuidesCategories(endpoint: string): Promise<DataItem[]>
     const dataItems: DataItem[] = data.data.map((item: any) => {
       const flattened = flattenAttributes(item);
       return {
-        name: flattened.Name,
-        color: flattened.color
+        name: flattened.name,
+        color: flattened.Color
       };
     });
     
