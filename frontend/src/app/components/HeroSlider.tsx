@@ -159,32 +159,46 @@ async function HeroSlider() {
                 Odkryj nasze przewodniki <br /> i wyrusz w podróż po Laponii
               </h1>
               <div className='grid grid-cols-1 lg:grid-cols-3 grid-row-span-1 gap-8 max-w-screen-lg mx-auto mt-8 h-96'>
-                <div className='h-96'>
+  {blogs?.[0]?.blog && (
+    <div className='h-96'>
       <SmallBlogCard
         title={blogs[0].blog.title}
-        shortContent={blogs[0].blog.shortContent}
-        poster={blogs[0].blog.poster?.formats?.small?.url}
+        shortContent={
+          blogs[0].blog.shortContent[0]?.children[0]?.text || 'Brak skrótu treści'
+        }
+        poster={blogs[0].blog.poster?.formats?.small?.url || '/placeholder.jpg'}
         slug={blogs[0].blog.slug}
         className='w-full h-full'
       />
-      </div>
-      <div className='h-96'>
+    </div>
+  )}
+  {blogs?.[1]?.blog && (
+    <div className='h-96'>
       <SmallBlogCard
         title={blogs[1].blog.title}
-        shortContent={blogs[1].blog.shortContent}
-        poster={blogs[1].blog.poster?.formats?.small?.url}
+        shortContent={
+          blogs[1].blog.shortContent[0]?.children[0]?.text || 'Brak skrótu treści'
+        }
+        poster={blogs[1].blog.poster?.formats?.small?.url || '/placeholder.jpg'}
         slug={blogs[1].blog.slug}
         className='w-full h-full hidden lg:block'
-      /></div>
-<div className='h-96'>
+      />
+    </div>
+  )}
+  {blogs?.[2]?.blog && (
+    <div className='h-96'>
       <SmallBlogCard
         title={blogs[2].blog.title}
-        shortContent={blogs[2].blog.shortContent}
-        poster={blogs[2].blog.poster?.formats?.small?.url}
+        shortContent={
+          blogs[2].blog.shortContent[0]?.children[0]?.text || 'Brak skrótu treści'
+        }
+        poster={blogs[2].blog.poster?.formats?.small?.url || '/placeholder.jpg'}
         slug={blogs[2].blog.slug}
         className='w-full h-full hidden lg:block'
-      /></div>
-              </div>
+      />
+    </div>
+  )}
+</div>
             </div>
           </CarouselItem>
         </CarouselContent>

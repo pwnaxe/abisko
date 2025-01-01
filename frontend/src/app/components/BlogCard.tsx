@@ -1,49 +1,50 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import React from 'react';
-import { MdArrowOutward } from 'react-icons/md';
+import Image from "next/image"
+import { BlogPost } from "../../../utils/blogs"
+import CategoryLabel from "./Category-label"
 
-function BlogCard() {
+interface BlogCardProps {
+  post: BlogPost
+}
+
+export function BlogCard({ post }: BlogCardProps) {
+  const { title, shortContent, poster, tags, createdAt } = post
+  const imageUrl = poster?.formats?.small?.url || "/placeholder.svg?height=400&width=600"
+  const excerpt = shortContent[0]?.children[0]?.text || ""
+
   return (
-    <div className='shadow-xl rounded-3xl overflow-hidden'>
-      <div className='relative'>
+    <div className="overflow-hidden rounded-lg bg-card h-full flex flex-col">
+      <div className="relative h-48">
         <Image
-          src='/img/hero.png'
-          alt=''
-          sizes='100%'
-          className='w-full'
-          width={400}
-          height={300}
+          src={imageUrl}
+          alt={title}
+          fill
+          className="object-cover"
         />
       </div>
-      <div className='p-4'>
-        <div className='flex gap-4'>
-          <div>Kategorie</div>
-          <p>Data publikacji</p>
+      <div className="p-4 space-y-2 flex-grow flex flex-col justify-between">
+        <div>
+          <div className="flex flex-wrap gap-2 mb-2">
+            {tags.map((tag) => (
+              <CategoryLabel
+                key={tag.id}
+                name={tag.name}
+                color={tag.Color}
+                setCurrentCategory={() => {}}
+              />
+            ))}
+          </div>
+          <h3 className="font-semibold line-clamp-2">{title}</h3>
+          <p className="text-sm text-muted-foreground line-clamp-3">{excerpt}</p>
         </div>
-        <p className='text-2xl my-4 font-bold'>
-          Tytuł poradnika lub bloga który ma więcej niż jedną linijkę, posiada
-          nawet trzy linijki.
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
-          sed tellus venenatis est molestie. Nulla quis est efficitur, cursus
-          odio et sagittis pretium. Mauris ac purus quis est dictum sodales.
-          Phasellus convallis eu est et tempus. Vestibulum sed tellus venenatis
-          est molestie. Suspendisse a cursus...
-        </p>
-        <div className='flex justify-end'>
-          <Link
-            href='/Blog/sample-post'
-            className='py-4 flex gap-2 items-center'
-          >
-            Czytaj więcej
-            <MdArrowOutward size={24} />
-          </Link>
+        <div className="flex justify-between items-center pt-2">
+          <span className="text-sm text-muted-foreground">
+            {new Date(createdAt).toLocaleDateString()}
+          </span>
+          <button className="text-sm hover:underline">
+            Czytaj więcej →
+          </button>
         </div>
       </div>
     </div>
-  );
+  )
 }
-
-export default BlogCard;
