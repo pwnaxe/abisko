@@ -1,41 +1,36 @@
-import { BlogCard } from "./BlogCard"
-import { BlogPost } from "../../../utils/blogs"
+import type { BlogListProps } from '../types/blog'
+import { BlogCard } from './Blog-Card'
 
-interface BlogGridProps {
-    posts: BlogPost[]
-  }
-  
-  export function BlogGrid({ posts }: BlogGridProps) {
-    const renderGridItem = (post: BlogPost, index: number) => {
-      const isWide = index % 5 === 3
-      return (
-        <div key={post.id} className={isWide ? "col-span-2" : ""}>
-          <BlogCard post={post} />
-        </div>
-      )
-    }
-  
-    const renderGrid = () => {
-      const grid = []
-      for (let i = 0; i < posts.length; i += 5) {
-        const chunk = posts.slice(i, i + 5)
-        grid.push(
-          <div key={i} className="grid grid-cols-3 gap-6">
-            {chunk.slice(0, 3).map((post, index) => renderGridItem(post, i + index))}
-          </div>
-        )
-        if (chunk.length > 3) {
-          grid.push(
-            <div key={i + "b"} className="grid grid-cols-3 gap-6">
-              {chunk.slice(3).map((post, index) => renderGridItem(post, i + 3 + index))}
-            </div>
-          )
+export function BlogGrid({ posts, currentCategory }: BlogListProps) {
+  const filteredPosts = currentCategory
+    ? posts.filter(post => post.tags.some(tag => tag.name === currentCategory))
+    : posts
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {filteredPosts.map((post, index) => {
+        let size = 'default';
+        if (index === 0) {
+          size = 'large';
+        } else if (index === 4 || index === 7 || ((index - 4) % 5 === 0 && index > 7)) {
+          size = 'wide';
         }
-      }
-      return grid
-    }
-  
-    return <div className="space-y-8">{renderGrid()}</div>
-  }
-  
-  
+        return (
+          <BlogCard 
+            key={post.id} 
+            post={post} 
+            size={size}
+            className={
+              size === 'large' 
+                ? 'md:col-span-3' 
+                : size === 'wide' 
+                  ? 'md:col-span-2' 
+                  : ''
+            }
+          />
+        );
+      })}
+    </div>
+  )
+}
+

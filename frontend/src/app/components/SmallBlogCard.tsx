@@ -20,7 +20,7 @@ function SmallBlogCard({ title, shortContent, poster, slug, className }) {
         />
         <div className='px-4 pt-6 pb-4 absolute bottom-0 left-0 bg-transparent'>
           <h1 className='text-2xl font-bold text-white'>{title}</h1>
-          <BlocksRenderer
+          {/* <BlocksRenderer
             content={shortContent}
             blocks={{
               paragraph: ({ children }) => <p className="text-white max-w-prose">{children}</p>,
@@ -34,7 +34,7 @@ function SmallBlogCard({ title, shortContent, poster, slug, className }) {
               bold: ({ children }) => <strong>{children}</strong>,
               italic: ({ children }) => <em>{children}</em>,
             }}
-          />
+          /> */}
           <Link
             href={`/Blog/${slug}`}
             className='inline-block px-6 py-2 mt-2 border text-white font-bold rounded-full'
