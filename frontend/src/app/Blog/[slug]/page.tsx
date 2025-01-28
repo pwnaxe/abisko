@@ -1,23 +1,17 @@
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
-import { format } from 'date-fns'
-import { pl } from 'date-fns/locale'
-import type { BlogPost } from '@/app/types/blog'
-import { getColorClass } from '../../../../utils/colorMap'
+import Link from 'next/link'
+import { BlogPost } from '@/app//types/blog'
 
-async function getBlogPost(slug: string): Promise<BlogPost | null> {
-  try {
-    const res = await fetch(`https://api.expeditionlapland.com/api/blogs?filters[slug][$eq]=${slug}&populate=*`, { next: { revalidate: 60 } })
-    if (!res.ok) throw new Error('Failed to fetch blog post')
-    const data = await res.json()
-    if (!data.data || data.data.length === 0) {
-      return null;
-    }
-    return data.data[0];
-  } catch (error) {
-    console.error('Error fetching blog post:', error)
-    return null
+async function getBlogPost(slug: string): Promise<BlogPost['data']> {
+  const res = await fetch(`https://api.expeditionlapland.com/api/blogs/${slug}?populate=*`, { next: { revalidate: 60 } })
+  
+  if (!res.ok) {
+    notFound()
   }
+
+  const data: BlogPost = await res.json()
+  return data.data
 }
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
@@ -27,46 +21,51 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     notFound()
   }
 
-  const { attributes } = post;
-
   return (
-    <article className="max-w-4xl mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-4">{attributes.title}</h1>
-      {attributes.date && (
-        <time className="text-gray-600 block mb-4">
-          {format(new Date(attributes.date), 'd MMMM yyyy', { locale: pl })}
-        </time>
-      )}
-      {attributes.author && (
-        <p className="text-gray-600 mb-4">Author: {attributes.author}</p>
-      )}
-      {attributes.poster && attributes.poster.data && (
-        <div className="relative h-64 md:h-96 mb-8">
+    <article className="max-w-4xl mx-auto px-4 py-12">
+      <header className="mb-8">
+        <h1 className="text-4xl font-bold mb-4">{post.attributes.title}</h1>
+        <p className="text-gray-600 mb-4">{new Date(post.attributes.publishedAt).toLocaleDateString()}</p>
+        {post.attributes.image && (
           <Image
-            src={`https://api.expeditionlapland.com${attributes.poster.data.attributes.formats.small.url}`}
-            alt={attributes.title}
-            fill
-            className="object-cover rounded-lg"
+            src={post.attributes.image.data.attributes.url || "/placeholder.svg"}
+            alt={post.attributes.image.data.attributes.alternativeText || post.attributes.title}
+            width={800}
+            height={400}
+            className="w-full h-auto object-cover rounded-lg"
           />
+        )}
+      </header>
+      <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: post.attributes.content }} />
+      <footer className="mt-12">
+        <div className="flex items-center mb-4">
+          {post.attributes.author.data.attributes.avatar && (
+            <Image
+              src={post.attributes.author.data.attributes.avatar.data.attributes.url || "/placeholder.svg"}
+              alt={post.attributes.author.data.attributes.name}
+              width={40}
+              height={40}
+              className="rounded-full mr-4"
+            />
+          )}
+          <div>
+            <p className="font-semibold">{post.attributes.author.data.attributes.name}</p>
+            {post.attributes.author.data.attributes.bio && (
+              <p className="text-sm text-gray-600">{post.attributes.author.data.attributes.bio}</p>
+            )}
+          </div>
         </div>
-      )}
-      {attributes.tags && attributes.tags.length > 0 && (
-        <div className="flex gap-2 mb-4">
-          {attributes.tags.map((tag) => (
-            <span
-              key={tag.id}
-              className={`px-2 py-1 text-xs rounded-full text-white ${getColorClass(tag.Color)}`}
-            >
-              {tag.name}
+        <div className="mb-4">
+          {post.attributes.tags.data.map((tag) => (
+            <span key={tag.id} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+              {tag.attributes.name}
             </span>
           ))}
         </div>
-      )}
-      <div className="prose max-w-none">
-        {attributes.content && attributes.content.map((contentBlock, index) => (
-          <p key={index}>{contentBlock.children[0].text}</p>
-        ))}
-      </div>
+        <Link href="/blog" className="text-blue-600 hover:underline">
+          &larr; Back to all posts
+        </Link>
+      </footer>
     </article>
   )
 }

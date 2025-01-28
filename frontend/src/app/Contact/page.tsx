@@ -37,9 +37,7 @@ export default function ContactPage() {
             });
 
             if (response.ok) {
-                alert(`Wiadomość została wysłana pomyślnie!
-Data wysłania: ${JSON.stringify(formData, null, 2)}`);
-                setFormData({ name: '', email: '', subject: '', message: '' });
+                alert(`Wiadomość została wysłana pomyślnie!`);
             } else {
                 alert(`Wystąpił błąd podczas wysyłania wiadomości (Status ${response.status}). Spróbuj ponownie.`);
             }
@@ -98,7 +96,7 @@ Szczegóły błędu: ${error.message}`);
                     ></textarea>
                     <button
                         type="submit"
-                        className={`bg-aquamarine-500 p-3 w-full col-span-2 rounded-2xl hover:bg-aquamarine-600 transition ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        className={`bg-neutral-200 mx-auto text-black p-3 w-1/2 col-span-2 rounded-2xl hover:bg-neutral-300 transition ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                         disabled={isSubmitting}
                     >
                         {isSubmitting ? 'Wysyłanie...' : 'Wyślij wiadomość'}

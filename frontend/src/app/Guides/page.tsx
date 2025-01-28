@@ -1,108 +1,67 @@
-// 'use client';
-// import React, { useEffect, useState } from 'react';
-// import BigGuideCard from '../components/BIgGuideCard';
-// import GuideCard from '../components/GuideCard';
-// import { getGuidesCategories, getGuidesPosts } from '../../../utils/guides';
-// import { DataItem } from '../../../utils/posts';
-// import CategoryLabel from '../components/CategoryLabel';
+'use client'
 
-// function GuidesListPage() {
-//   const [posts, setPosts] = useState<DataItem[]>([]);
-//   const [articlesToShow, setAtriclesToShow] = useState(9);
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [currentCategory, setCurrentCategory] = useState('');
-//   const [blogCategories, setBlogCategories] = useState([]);
+import { useState, useEffect } from 'react'
+import { BlogGrid } from '../components/Guide-Grid'
+import { Navigation } from '../components/Navigation'
+import SearchBar from '../components/SearchBar'
+import type { BlogPost, Tag } from '../types/blog'
 
-//   useEffect(() => {
-//     const fetchPosts = async () => {
-//       const data = await getGuidesPosts(
-//         '/api/guides',
-//         articlesToShow,
-//         currentCategory
-//       );
-//       setPosts(data);
-//       setIsLoading(true);
-//     };
+export default function GuidePage() {
+  const [currentCategory, setCurrentCategory] = useState('')
+  const [tags, setTags] = useState<Tag[]>([])
+  const [blogPosts, setBlogPosts] = useState<BlogPost[]>([])
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
-//     fetchPosts();
-//   }, [currentCategory]);
+  useEffect(() => {
+    setIsLoading(true)
 
-//   useEffect(() => {
-//     const fetchCategories = async () => {
-//       const data = await getGuidesCategories('/api/guide-categories');
-//       setBlogCategories(data as any);
-//     };
-//     fetchCategories();
-//   }, []);
-//   console.log('[Guides Page]', posts);
+    Promise.all([
+      fetch('https://api.expeditionlapland.com/api/tags')
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to fetch tags')
+          return res.json()
+        })
+        .then(data => setTags(data.data))
+        .catch(() => setError('Failed to load tags')),
 
-//   return (
-//     <>
-//       <div className='h-[500px] relative flex items-end justify-center bg-[url(/img/guides-img.jpg)] bg-bottom bg-cover'>
-//         <div className='absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/50 to-transparent -z-0'></div>
-//         <div className='mb-48 z-10'>
-//           <p className='subtitle text-center'>subtitle</p>
-//           <p className='pageTitle'>
-//             Dzielimy się wiedzą i doświadczeniem - dołącz do nas!
-//           </p>
-//         </div>
-//       </div>
-//       <div className='max-w-screen-xl mx-auto text-black'>
-//         <div className='my-16 flex gap-4 items-center'>
-//           <div onClickCapture={() => setCurrentCategory('')}>
-//             {currentCategory === '' ? (
-//               <p>Wybierz kategorie:</p>
-//             ) : (
-//               <p className='px-4 py-1  rounded-full border hover:cursor-pointer'>
-//                 Wszystkie
-//               </p>
-//             )}
-//           </div>
-//           <div className='flex gap-2'>
-//             {blogCategories.length > 0 &&
-//               blogCategories.map((category: any) => (
-//                 <CategoryLabel
-//                   key={category.name}
-//                   name={category.name}
-//                   color={category.color}
-//                   setCurrentCategory={setCurrentCategory}
-//                 />
-//               ))}
-//           </div>
-//         </div>
-//         <div className=''>
-//           {posts.length > 0 &&
-//             posts.map(
-//               (post: any) =>
-//                 post.Featured && (
-//                   <BigGuideCard
-//                     key={post.slug}
-//                     post={post}
-//                     isLoading={isLoading}
-//                   />
-//                 )
-//             )}
+      fetch('https://api.expeditionlapland.com/api/guides?populate=*')
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to fetch guide')
+          return res.json()
+        })
+        .then(data => setBlogPosts(data.data))
+        .catch(() => setError('Failed to load guide')),
+    ]).finally(() => setIsLoading(false))
+  }, [])
 
-//           <div className='grid grid-cols-3 gap-8 my-8'>
-//             {posts.length > 0 &&
-//               posts.map(
-//                 (post: any) =>
-//                   !post.Featured && (
-//                     <GuideCard
-//                       key={post.slug}
-//                       post={post}
-//                       isLoading={isLoading}
-//                     />
-//                   )
-//               )}
-//           </div>
-//           <div className='grid grid-cols-3 gap-8 my-8'>
-//             <div className='col-span-2'></div>
-//           </div>
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
+  if (isLoading) {
+    return <div className="min-h-screen bg-background flex items-center justify-center">Loading...</div>
+  }
 
-// export default GuidesListPage;
+  if (error) {
+    return <div className="min-h-screen bg-background flex items-center justify-center">{error}</div>
+  }
+
+  return (
+    <>
+      <div className="h-[500px] relative flex items-end justify-center bg-[url(/img/guides-img.jpg)] bg-bottom bg-cover">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/50 to-transparent"></div>
+        <div className="my-auto pt-16 z-10">
+          <p className="subtitle text-center mb-3 text-white">Oczami pordóżników</p>
+          <h1 className="pageTitle text-4xl md:text-5xl font-bold text-center text-white mb-8">
+          Przeżyj z nami podróż do Laponii
+          </h1>
+          <SearchBar />
+        </div>
+      </div>
+      <div className="max-w-screen-xl mx-auto mt-6">
+        <Navigation tags={tags} currentCategory={currentCategory} setCurrentCategory={setCurrentCategory} />
+        <div className="container mx-auto px-4 py-6 w-4/5">
+          <BlogGrid posts={blogPosts} currentCategory={currentCategory} />
+        </div>
+      </div>
+    </>
+  )
+}
+

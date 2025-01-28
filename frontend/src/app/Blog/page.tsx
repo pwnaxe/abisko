@@ -55,7 +55,7 @@ export default function BlogPage() {
           <SearchBar />
         </div>
       </div>
-      <div className="max-w-screen-xl mx-auto">
+      <div className="max-w-screen-xl mx-auto mt-6">
         <Navigation tags={tags} currentCategory={currentCategory} setCurrentCategory={setCurrentCategory} />
         <div className="container mx-auto px-4 py-6 w-4/5">
           <BlogGrid posts={blogPosts} currentCategory={currentCategory} />
