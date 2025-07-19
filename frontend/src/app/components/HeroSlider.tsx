@@ -40,10 +40,10 @@ async function HeroSlider() {
               <div className='absolute inset-0 bg-black opacity-30 z-0'></div>
               <div className='z-10 mx-auto'>
                 <h2 className='text-sm lg:text-lg font-bold text-center uppercase opacity-60 tracking-widest'>
-                  Twoja podróż zaczyna się tutaj
+                  Twoja przygoda zaczyna się tutaj
                 </h2>
                 <h1 className='text-4xl lg:text-7xl text-center font-lora leading-tight'>
-                  Wyrusz w podróż <br />i odkryj magię Laponii
+                  Wyrusz z nami w podróż, <br />by uchwycić magię Laponii
                 </h1>
                 <div className='flex flex-col lg:flex-row justify-center pt-24 lg:pt-0 mt-7 gap-4'>
                   <button className='border border-white rounded-full hover:bg-white hover:text-black px-2 lg:px-5 py-3 transition-all duration-1000'>
@@ -159,46 +159,46 @@ async function HeroSlider() {
                 Odkryj nasze przewodniki <br /> i wyrusz w podróż po Laponii
               </h1>
               <div className='grid grid-cols-1 lg:grid-cols-3 grid-row-span-1 gap-8 max-w-screen-lg mx-auto mt-8 h-96'>
-  {blogs?.[0]?.blog && (
-    <div className='h-96'>
-      <SmallBlogCard
-        title={blogs[0].blog.title}
-        shortContent={
-          blogs[0].blog.shortContent[0]?.children[0]?.text || 'Brak skrótu treści'
-        }
-        poster={blogs[0].blog.poster?.formats?.small?.url || '/placeholder.jpg'}
-        slug={blogs[0].blog.slug}
-        className='w-full h-full'
-      />
-    </div>
-  )}
-  {blogs?.[1]?.blog && (
-    <div className='h-96'>
-      <SmallBlogCard
-        title={blogs[1].blog.title}
-        shortContent={
-          blogs[1].blog.shortContent[0]?.children[0]?.text || 'Brak skrótu treści'
-        }
-        poster={blogs[1].blog.poster?.formats?.small?.url || '/placeholder.jpg'}
-        slug={blogs[1].blog.slug}
-        className='w-full h-full hidden lg:block'
-      />
-    </div>
-  )}
-  {blogs?.[2]?.blog && (
-    <div className='h-96'>
-      <SmallBlogCard
-        title={blogs[2].blog.title}
-        shortContent={
-          blogs[2].blog.shortContent[0]?.children[0]?.text || 'Brak skrótu treści'
-        }
-        poster={blogs[2].blog.poster?.formats?.small?.url || '/placeholder.jpg'}
-        slug={blogs[2].blog.slug}
-        className='w-full h-full hidden lg:block'
-      />
-    </div>
-  )}
-</div>
+                {blogs?.[0]?.blog && (
+                  <div className='h-96'>
+                    <SmallBlogCard
+                      title={blogs[0].blog.title}
+                      shortContent={
+                        blogs[0].blog.shortContent[0]?.children[0]?.text || 'Brak skrótu treści'
+                      }
+                      poster={blogs[0].blog.poster?.formats?.small?.url || '/placeholder.jpg'}
+                      slug={blogs[0].blog.slug}
+                      className='w-full h-full'
+                    />
+                  </div>
+                )}
+                {blogs?.[1]?.blog && (
+                  <div className='h-96'>
+                    <SmallBlogCard
+                      title={blogs[1].blog.title}
+                      shortContent={
+                        blogs[1].blog.shortContent[0]?.children[0]?.text || 'Brak skrótu treści'
+                      }
+                      poster={blogs[1].blog.poster?.formats?.small?.url || '/placeholder.jpg'}
+                      slug={blogs[1].blog.slug}
+                      className='w-full h-full hidden lg:block'
+                    />
+                  </div>
+                )}
+                {blogs?.[2]?.blog && (
+                  <div className='h-96'>
+                    <SmallBlogCard
+                      title={blogs[2].blog.title}
+                      shortContent={
+                        blogs[2].blog.shortContent[0]?.children[0]?.text || 'Brak skrótu treści'
+                      }
+                      poster={blogs[2].blog.poster?.formats?.small?.url || '/placeholder.jpg'}
+                      slug={blogs[2].blog.slug}
+                      className='w-full h-full hidden lg:block'
+                    />
+                  </div>
+                )}
+              </div>
             </div>
           </CarouselItem>
         </CarouselContent>

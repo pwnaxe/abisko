@@ -16,13 +16,13 @@ export default function Navbar() {
       className='w-full flex justify-center items-center fixed top-0 py-4 px-5 md:px-11 z-50 text-white '
       role='navigation'
     >
-      <div className='flex items-center justify-between w-full max-w-6xl'>
+      <div className='flex items-center w-full max-w-6xl'>
         <div className='flex gap-x-4 text-xl'>
         <Link href='https://expeditionlapland.com'>
           <Image src='/svg/logoWhite.svg' alt='Abisko' width={136} height={70} />
         </Link>
         </div>
-        <div className='hidden md:flex gap-x-4 text-xl'>
+        <div className='hidden md:flex gap-x-6 text-xl flex-grow justify-center'>
           <Link href='/Attractions'>Atrakcje</Link>
           <Link href='/Concierge'>Concierge</Link>
           <Link href='/Zorza'>Zorza Polarna</Link>
