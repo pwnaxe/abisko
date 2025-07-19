@@ -1,0 +1,45 @@
+{
+    "kind": "collectionType",
+    "collectionName": "tags",
+    "info": {
+        "singularName": "tag",
+        "pluralName": "tags",
+        "displayName": "tag",
+        "description": ""
+    },
+    "options": {
+        "draftAndPublish": true
+    },
+    "pluginOptions": {},
+    "attributes": {
+        "name": {
+            "type": "string"
+        },
+        "blog": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::blog.blog",
+            "inversedBy": "tags"
+        },
+        "Color": {
+            "type": "enumeration",
+            "enum": [
+                "Fjord Blue",
+                "Light Blue",
+                "Aurora Teal",
+                "Green",
+                "Magenta",
+                "Orange",
+                "yellow",
+                "red",
+                "pink"
+            ]
+        },
+        "guide": {
+            "type": "relation",
+            "relation": "manyToOne",
+            "target": "api::guide.guide",
+            "inversedBy": "tags"
+        }
+    }
+}
