@@ -18,6 +18,39 @@ export default function AboutUsPage() {
           </p>
         </div>
       </div>
+      <div className='bg-white py-12'>
+      <div className='container mx-auto px-4'>
+        <h2 className='text-3xl font-bold text-gray-800 text-center mb-8'>Co możemy dla Ciebie zrobić?</h2>
+        <p className='text-center text-gray-600 mb-12 max-w-2xl mx-auto'>
+          Donec sit amet quam magna. Nullam suscipit libero sit amet elit hendrerit
+          scelerisque sed sed tellus. Cras eleifend est ac aliquet cursus. Phasellus nulla
+          dolor, tristique vel fringilla sit amet, dictum sed arcu. Vivamus massa sapien.
+        </p>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+          <div className='bg-gray-50 p-6 rounded-lg shadow-md text-center'>
+            <h3 className='text-xl font-semibold text-gray-800 mb-4'>Miejscowi</h3>
+            <p className='text-gray-600'>Opis miejscowych przewodników.</p>
+          </div>
+          <div className='bg-gray-50 p-6 rounded-lg shadow-md text-center'>
+            <h3 className='text-xl font-semibold text-gray-800 mb-4'>Mamy wieloletnie doświadczenie</h3>
+            <p className='text-gray-600'>Opis doświadczenia.</p>
+          </div>
+          <div className='bg-gray-50 p-6 rounded-lg shadow-md text-center'>
+            <h3 className='text-xl font-semibold text-gray-800 mb-4'>Certyfikowani przewodnicy</h3>
+            <p className='text-gray-600'>Opis certyfikacji.</p>
+          </div>
+          <div className='bg-gray-50 p-6 rounded-lg shadow-md text-center'>
+            <h3 className='text-xl font-semibold text-gray-800 mb-4'>Sprawdzone firmy</h3>
+            <p className='text-gray-600'>Opis współpracy z firmami.</p>
+          </div>
+          <div className='bg-gray-50 p-6 rounded-lg shadow-md text-center'>
+            <h3 className='text-xl font-semibold text-gray-800 mb-4'>Unikalne kierunki</h3>
+            <p className='text-gray-600'>Opis unikalnych kierunków.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+      
       <div className='max-w-screen-xl mx-auto text-black'>
         <div className='flex flex-wrap items-center my-16 '>
           <div className='basis-2/5'>

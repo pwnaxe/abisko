@@ -25,7 +25,7 @@ export default function Navbar() {
         <div className='hidden md:flex gap-x-4 text-xl'>
           <Link href='/Attractions'>Atrakcje</Link>
           <Link href='/Concierge'>Concierge</Link>
-          <Link href='/Aurora'>Zorza Polarna</Link>
+          <Link href='/Zorza'>Zorza Polarna</Link>
           <Link href='/Blog'>Blog</Link>
           <Link href='/Guides'>Poradniki</Link>
           <Link href='/AboutUs'>O nas</Link>

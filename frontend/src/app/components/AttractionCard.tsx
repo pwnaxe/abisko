@@ -7,6 +7,9 @@ interface AttractionCardProps {
   location: string;
   duration: string;
   price: string;
+  image: string;
+  starIcon?: string;
+  isLarge?: boolean;
   widgetId: string;
   itemId: string;
   categoryId: string;
@@ -20,6 +23,9 @@ const AttractionCard: React.FC<AttractionCardProps> = ({
   location,
   duration,
   price,
+  image,
+  starIcon = "/img/Star1.png",
+  isLarge = false,
   widgetId,
   itemId,
   categoryId,
@@ -44,26 +50,40 @@ const AttractionCard: React.FC<AttractionCardProps> = ({
   }, [showBooking, widgetId, itemId, categoryId, host, tid]);
 
   return (
-    <div className='shadow-xl rounded-3xl overflow-hidden'>
-      <div className='relative'>
-        <img src={`/images/${itemId}.jpg`} alt={title} className='w-full h-64 object-cover' />
+    <div className={`shadow-xl rounded-3xl overflow-hidden flex flex-col ${isLarge ? 'h-[58rem]' : 'h-[28rem]'}`}>
+      <div className='relative flex-shrink-0'>
+        <img 
+          src={image} 
+          alt={title} 
+          className={`w-full object-cover ${isLarge ? 'h-[46rem]' : 'h-64'}`} 
+        />
         <p className='absolute top-4 left-4 rounded-full text-white px-4 py-2 bg-[#00284D]'>
           Nowość
         </p>
         <p className='absolute top-4 right-4 rounded-full text-white px-4 py-2 bg-[#00284D]/40 flex gap-1 items-center'>
-          ★ {rating}
+          <img src={starIcon} alt="star" className="w-4 h-4" /> {rating}
         </p>
       </div>
-      <div className='p-4'>
-        <p className='text-2xl font-bold'>{title}</p>
+      <div className='p-4 flex flex-col flex-grow'>
+        <h3 className='text-xl font-bold mb-3 overflow-hidden min-h-[3.5rem] leading-tight' style={{
+          display: '-webkit-box',
+          WebkitLineClamp: 2,
+          WebkitBoxOrient: 'vertical',
+        }}>{title}</h3>
 
-        <div className='flex gap-8 my-4'>
-          <p className='flex gap-2 items-center'>📍 {location}</p>
-          <p className='flex gap-2 items-center'>⏰ {duration}</p>
+        <div className='flex gap-4 mb-4 text-sm text-gray-600'>
+          <p className='flex gap-1 items-center'>
+            <img src="/img/loc_icon2.png" alt="location" className="w-4 h-4" />
+            {location}
+          </p>
+          <p className='flex gap-1 items-center'>
+            <img src="/img/time_icon2.png" alt="time" className="w-4 h-4" />
+            {duration}
+          </p>
         </div>
 
         {showBooking && (
-          <div id={widgetId} className='my-4 p-4 bg-gray-100 border rounded-lg'>
+          <div id={widgetId} className='mb-4 p-4 bg-gray-100 border rounded-lg'>
             <p
               id="CHECKFRONT_LOADER"
               style={{
@@ -76,10 +96,10 @@ const AttractionCard: React.FC<AttractionCardProps> = ({
           </div>
         )}
 
-        <div className='flex justify-between items-center my-4'>
-          <p className='text-3xl font-extrabold text-[#00B7A3]'>{price} zł</p>
+        <div className='flex justify-between items-center mt-auto'>
+          <p className='text-2xl font-extrabold text-[#00B7A3]'>{price}</p>
           <button
-            className='px-6 py-2 bg-[#00B7A3] text-white font-bold rounded-full'
+            className='px-4 py-2 bg-[#00B7A3] text-white font-bold rounded-full text-sm'
             onClick={() => setShowBooking(!showBooking)}
           >
             {showBooking ? 'Zwiń' : 'Kup teraz'}
