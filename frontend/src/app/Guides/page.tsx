@@ -1,7 +1,5 @@
 "use client"
-
 import type React from "react"
-
 import { useState } from "react"
 import { CiSearch } from "react-icons/ci"
 import Navbar from "../components/Navbar"
@@ -20,10 +18,8 @@ export default function PoradnikiPage() {
       <div className="h-[70vh] relative flex items-center justify-center bg-gradient-to-br from-slate-700 via-slate-600 to-slate-800">
         {/* Header */}
         <Navbar />
-
         {/* Overlay for better text readability */}
         <div className="absolute top-0 left-0 w-full h-full bg-black/20"></div>
-
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           <p className="text-teal-400 text-sm md:text-base font-semibold mb-3 tracking-widest uppercase">
@@ -32,7 +28,6 @@ export default function PoradnikiPage() {
           <h1 className="text-white text-2xl md:text-3xl lg:text-4xl font-semibold mb-6 leading-tight">
             Przeżyj z nami podróż do Laponii
           </h1>
-
           {/* Search Form */}
           <form onSubmit={handleSearch} className="relative max-w-lg mx-auto">
             <div className="relative">
@@ -88,97 +83,280 @@ export default function PoradnikiPage() {
             </div>
           </div>
 
-          {/* First Tutorial Card - Image takes more than half width */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
-            <div className="flex flex-col lg:flex-row">
-              {/* Image Section - Takes about 60% width */}
-              <div className="lg:w-3/5">
-                <img
-                  src="/img/1_poradnik_card.png"
-                  alt="Tutorial image"
-                  className="w-full h-64 lg:h-full object-cover"
-                />
-              </div>
-
-              {/* Content Section - Takes about 40% width */}
-              <div className="lg:w-2/5 p-8">
-                {/* Tags */}
-                <div className="flex gap-2 mb-4">
-                  <span className="px-3 py-1 bg-blue-500 text-white text-xs rounded-full">Zima</span>
-                  <span className="px-3 py-1 bg-purple-500 text-white text-xs rounded-full">Ubiór</span>
-                  <span className="text-gray-500 text-sm ml-2">Data publikacji</span>
-                </div>
-
-                {/* Title */}
-                <h2 className="text-xl lg:text-2xl font-semibold text-gray-900 mb-4 leading-tight">
-                  Tytuł poradnika lub bloga który ma więcej niż jedną linijkę, posiada nawet trzy linijki.
-                </h2>
-
-                {/* Content */}
-                <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in turpis augue. Ut et ligula non lectus
-                  ornare laoreet vitae id neque. Fusce ac rutrum risus. Quisque mi mauris, consectetur a semper non,
-                  feugiat quis velit. Ut maximus nisl id tristique lobortis. Curabitur dui velit, ornare a tellus eu,
-                  elementum congue nisl. Vestibulum a orci sed risus tristique porta non sit amet risus. Suspendisse
-                  viverra turpis gravida lectus dapibus pulvinar. Fusce a lectus ut lectus aliquet rutrum. Aenean eu
-                  risus eget ante bibendum lacinia et vitae massa. Sed lacinia arcu id nisl luctus pretium. Curabitur
-                  rutrum, est eu accumsan tempus, augue diam condimentum ipsum, eget euismod tortor ipsum bibendum
-                  nulla. Donec commodo dapibus quam et consectetur. Donec id elit id metus ornare malesuada a facilisis
-                  erat. Fusce vitae lorem quis dui consequat gravida in non orci. Praesent at molestie nulla, ac viverra
-                  orci.
-                </p>
-
-                {/* Read More Link */}
-                <div className="flex justify-end">
-                  <button className="flex items-center gap-2 text-gray-700 font-medium hover:text-gray-900 transition-colors">
-                    Czytaj więcej
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* First Tutorial Card - Full width, horizontal layout */}
+            <div className="lg:col-span-12">
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[616px]">
+                <div className="flex flex-col lg:flex-row h-full">
+                  {/* Image Section - Takes about 60% width */}
+                  <div className="lg:w-3/5 h-64 lg:h-full">
+                    <img
+                      src="/img/1_poradnik_card.png"
+                      alt="Tutorial image"
+                      className="w-full h-64 lg:h-full object-cover"
+                    />
+                  </div>
+                  {/* Content Section - Takes about 40% width */}
+                  <div className="lg:w-2/5 p-8">
+                    {/* Tags */}
+                    <div className="flex gap-2 mb-4">
+                      <span className="px-3 py-1 bg-blue-500 text-white text-xs rounded-full">Zima</span>
+                      <span className="px-3 py-1 bg-purple-500 text-white text-xs rounded-full">Ubiór</span>
+                      <span className="text-gray-500 text-sm ml-2">Data publikacji</span>
+                    </div>
+                    {/* Title */}
+                    <h2 className="text-xl lg:text-2xl font-semibold text-gray-900 mb-4 leading-tight">
+                      Tytuł poradnika lub bloga który ma więcej niż jedną linijkę, posiada nawet trzy linijki.
+                    </h2>
+                    {/* Content */}
+                    <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in turpis augue. Ut et ligula non
+                      lectus ornare laoreet vitae id neque. Fusce ac rutrum risus. Quisque mi mauris, consectetur a
+                      semper non, feugiat quis velit. Ut maximus nisl id tristique lobortis. Curabitur dui velit, ornare
+                      a tellus eu, elementum congue nisl. Vestibulum a orci sed risus tristique porta non sit amet
+                      risus. Suspendisse viverra turpis gravida lectus dapibus pulvinar. Fusce a lectus ut lectus
+                      aliquet rutrum. Aenean eu risus eget ante bibendum lacinia et vitae massa. Sed lacinia arcu id
+                      nisl luctus pretium. Curabitur rutrum, est eu accumsan tempus, augue diam condimentum ipsum, eget
+                      euismod tortor ipsum bibendum nulla. Donec commodo dapibus quam et consectetur. Donec id elit id
+                      metus ornare malesuada a facilisis erat. Fusce vitae lorem quis dui consequat gravida in non orci.
+                      Praesent at molestie nulla, ac viverra orci.
+                    </p>
+                    {/* Read More Link */}
+                    <div className="flex justify-end">
+                      <button className="flex items-center gap-2 text-gray-700 font-medium hover:text-gray-900 transition-colors">
+                        Czytaj więcej
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Second Tutorial Card - Image takes only 1/4 width */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden mt-8">
-            <div className="flex flex-col lg:flex-row">
-              {/* Image Section - Takes about 25% width */}
-              <div className="lg:w-1/4">
-                <img src="/img/2_poradnik_card.png" alt="Tutorial image" className="w-full h-48 lg:h-64 object-cover" />
-              </div>
-
-              {/* Content Section - Takes about 75% width */}
-              <div className="lg:w-3/4 p-6">
-                {/* Tags */}
-                <div className="flex gap-2 mb-3">
-                  <span className="px-3 py-1 bg-orange-500 text-white text-xs rounded-full">Jedzenie</span>
-                  <span className="px-3 py-1 bg-purple-500 text-white text-xs rounded-full">Ubiór</span>
-                  <span className="text-gray-500 text-sm ml-2">Data publikacji</span>
+            {/* Second Tutorial Card - Full width, horizontal layout */}
+            <div className="lg:col-span-12">
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[280px]">
+                <div className="flex flex-col lg:flex-row h-full">
+                  {/* Image Section - Takes about 25% width */}
+                  <div className="lg:w-1/4 h-full">
+                    <img
+                      src="/img/2_poradnik_card.png"
+                      alt="Tutorial image"
+                      className="w-full h-48 lg:h-full object-cover"
+                    />
+                  </div>
+                  {/* Content Section - Takes about 75% width */}
+                  <div className="lg:w-3/4 p-6 flex flex-col justify-center">
+                    {/* Tags */}
+                    <div className="flex gap-2 mb-3">
+                      <span className="px-3 py-1 bg-orange-500 text-white text-xs rounded-full">Jedzenie</span>
+                      <span className="px-3 py-1 bg-purple-500 text-white text-xs rounded-full">Ubiór</span>
+                      <span className="text-gray-500 text-sm ml-2">Data publikacji</span>
+                    </div>
+                    {/* Title */}
+                    <h2 className="text-lg lg:text-xl font-semibold text-gray-900 mb-3 leading-tight">
+                      Tytuł poradnika lub bloga który ma więcej niż jedną linijkę, posiada dwie linijki.
+                    </h2>
+                    {/* Content */}
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis est efficitur, cursus odio et
+                      sagittis pretium. Mauris ac purus quis est dictum sodales. Phasellus convallis eu est et tempus.
+                      Vestibulum sed tellus venenatis est molestie. Duis interdum velit non commodo eleifend.
+                      Suspendisse a cursus...
+                    </p>
+                    {/* Read More Link */}
+                    <div className="flex justify-end">
+                      <button className="flex items-center gap-2 text-gray-700 font-medium hover:text-gray-900 transition-colors">
+                        Czytaj więcej
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
+              </div>
+            </div>
 
-                {/* Title */}
-                <h2 className="text-lg lg:text-xl font-semibold text-gray-900 mb-3 leading-tight">
-                  Tytuł poradnika lub bloga który ma więcej niż jedną linijkę, posiada dwie linijki.
-                </h2>
+            {/* Third Tutorial Card - Left side of the row */}
+            <div className="lg:col-span-9">
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[280px]">
+                <div className="flex flex-col lg:flex-row h-full">
+                  {/* Image Section - Takes about 1/3 width to match card 2 proportionally */}
+                  <div className="lg:w-1/3 h-full">
+                    <img
+                      src="/img/3_card_guides.png"
+                      alt="Tutorial image"
+                      className="w-full h-48 lg:h-full object-cover"
+                    />
+                  </div>
+                  {/* Content Section - Takes about 2/3 width */}
+                  <div className="lg:w-2/3 p-6 flex flex-col justify-center">
+                    {/* Tags */}
+                    <div className="flex gap-2 mb-3">
+                      <span className="px-3 py-1 bg-green-500 text-white text-xs rounded-full">Lato</span>
+                      <span className="px-3 py-1 bg-orange-500 text-white text-xs rounded-full">Jedzenie</span>
+                      <span className="text-gray-500 text-sm ml-2">Data publikacji</span>
+                    </div>
+                    {/* Title */}
+                    <h2 className="text-lg lg:text-xl font-semibold text-gray-900 mb-3 leading-tight">
+                      Tytuł poradnika lub bloga który ma więcej niż jedną linijkę, posiada dwie linijki.
+                    </h2>
+                    {/* Content */}
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis est efficitur, cursus odio et
+                      sagittis pretium. Mauris ac purus quis est dictum sodales. Phasellus convallis eu est et tempus.
+                      Vestibulum sed tellus venenatis est molestie. Duis interdum velit non commodo eleifend.
+                      Suspendisse a cursus...
+                    </p>
+                    {/* Read More Link */}
+                    <div className="flex justify-end">
+                      <button className="flex items-center gap-2 text-gray-700 font-medium hover:text-gray-900 transition-colors">
+                        Czytaj więcej
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-                {/* Content */}
-                <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis est efficitur, cursus odio et
-                  sagittis pretium. Mauris ac purus quis est dictum sodales. Phasellus convallis eu est et tempus.
-                  Vestibulum sed tellus venenatis est molestie. Duis interdum velit non commodo eleifend. Suspendisse a
-                  cursus...
-                </p>
+            {/* New Vertical Card - Right side spanning two rows */}
+            <div className="lg:col-span-3 lg:row-span-2">
+              <div className="bg-gray-200 rounded-2xl shadow-lg h-full min-h-[500px] flex items-center justify-center">
+                <div className="text-center p-6">
+                  <div className="w-16 h-16 bg-gray-400 rounded-full mx-auto mb-4"></div>
+                  <h3 className="text-lg font-semibold text-gray-600 mb-2">Placeholder Card</h3>
+                  <p className="text-gray-500 text-sm">Ta karta będzie zawierać treść w układzie pionowym</p>
+                </div>
+              </div>
+            </div>
 
-                {/* Read More Link */}
-                <div className="flex justify-end">
-                  <button className="flex items-center gap-2 text-gray-700 font-medium hover:text-gray-900 transition-colors">
-                    Czytaj więcej
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
+            {/* Fourth Tutorial Card - Left side, second row */}
+            <div className="lg:col-span-9">
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[280px]">
+                <div className="flex flex-col lg:flex-row h-full">
+                  {/* Image Section - Takes about 1/3 width to match card 2 proportionally */}
+                  <div className="lg:w-1/3 h-full">
+                    <img
+                      src="/img/4_card_guides.png"
+                      alt="Northern lights tutorial"
+                      className="w-full h-48 lg:h-full object-cover"
+                    />
+                  </div>
+                  {/* Content Section - Takes about 2/3 width */}
+                  <div className="lg:w-2/3 p-6 flex flex-col justify-center">
+                    {/* Tags */}
+                    <div className="flex gap-2 mb-3">
+                      <span className="px-3 py-1 bg-cyan-400 text-white text-xs rounded-full">Warunki pogodowe</span>
+                      <span className="px-3 py-1 bg-purple-500 text-white text-xs rounded-full">Zorza polarna</span>
+                      <span className="text-gray-500 text-sm ml-2">Data publikacji</span>
+                    </div>
+                    {/* Title */}
+                    <h2 className="text-lg lg:text-xl font-semibold text-gray-900 mb-3 leading-tight">
+                      Tytuł poradnika lub bloga który ma więcej niż jedną linijkę, posiada dwie linijki.
+                    </h2>
+                    {/* Content */}
+                    <p className="text-gray-600 text-sm leading-relaxed mb-4">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quis est efficitur, cursus odio et
+                      sagittis pretium. Mauris ac purus quis est dictum sodales. Phasellus convallis eu est et tempus.
+                      Vestibulum sed tellus venenatis est molestie. Duis interdum velit non commodo eleifend.
+                      Suspendisse a cursus...
+                    </p>
+                    {/* Read More Link */}
+                    <div className="flex justify-end">
+                      <button className="flex items-center gap-2 text-gray-700 font-medium hover:text-gray-900 transition-colors">
+                        Czytaj więcej
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Fifth Tutorial Card - Square vertical layout */}
+            <div className="lg:col-span-6">
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[586px] w-full">
+                {/* Image Section - Takes 45% of height */}
+                <div className="h-[45%]">
+                  <img src="/img/1_poradnik_card.png" alt="Tutorial image" className="w-full h-full object-cover" />
+                </div>
+                {/* Content Section - Takes 55% of height */}
+                <div className="h-[55%] p-6 flex flex-col">
+                  {/* Tags */}
+                  <div className="flex gap-2 mb-3">
+                    <span className="px-3 py-1 bg-green-500 text-white text-xs rounded-full">Lato</span>
+                    <span className="px-3 py-1 bg-purple-500 text-white text-xs rounded-full">Ubiór</span>
+                    <span className="text-gray-500 text-sm ml-2">Data publikacji</span>
+                  </div>
+                  {/* Title */}
+                  <h2 className="text-lg font-semibold text-gray-900 mb-3 leading-tight">
+                    Tytuł poradnika lub bloga który ma więcej niż jedną linijkę, posiada dwie linijki.
+                  </h2>
+                  {/* Content */}
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed tellus venenatis est
+                    molestie. Nulla quis est efficitur, cursus odio et sagittis pretium. Mauris ac purus quis est dictum
+                    sodales. Phasellus convallis eu est et tempus...
+                  </p>
+                  {/* Read More Link */}
+                  <div className="flex justify-end mt-auto">
+                    <button className="flex items-center gap-2 text-gray-700 font-medium hover:text-gray-900 transition-colors">
+                      Czytaj więcej
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Sixth Tutorial Card - Square vertical layout */}
+            <div className="lg:col-span-6">
+              <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[586px] w-full">
+                {/* Image Section - Takes 45% of height */}
+                <div className="h-[45%]">
+                  <img
+                    src="/img/6_card_guides.png"
+                    alt="Northern lights spectacular view"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {/* Content Section - Takes 55% of height */}
+                <div className="h-[55%] p-6 flex flex-col">
+                  {/* Tags */}
+                  <div className="flex gap-2 mb-3">
+                    <span className="px-3 py-1 bg-teal-500 text-white text-xs rounded-full">Zorza polarna</span>
+                    <span className="text-gray-500 text-sm ml-2">Data publikacji</span>
+                  </div>
+                  {/* Title */}
+                  <h2 className="text-lg font-semibold text-gray-900 mb-3 leading-tight">
+                    Tytuł poradnika lub bloga który ma więcej niż jedną linijkę, posiada dwie linijki.
+                  </h2>
+                  {/* Content */}
+                  <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed tellus venenatis est
+                    molestie. Nulla quis est efficitur, cursus odio et sagittis pretium. Mauris ac purus quis est dictum
+                    sodales. Phasellus convallis eu est et tempus...
+                  </p>
+                  {/* Read More Link */}
+                  <div className="flex justify-end mt-auto">
+                    <button className="flex items-center gap-2 text-gray-700 font-medium hover:text-gray-900 transition-colors">
+                      Czytaj więcej
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
